@@ -7,7 +7,304 @@
   </p>
 <exercises xml:id="homework-set-2">
     <title>Second homework set</title>
- <p> What is going on here? </p>
+<p>Use Matlab for the following problems.</p>
+
+<exercise>
+    <title>Question 1.A</title>
+    <statement>
+        <p> 
+            A popular technique used in science and engineering is the semilogy plot, which is the plot of data using log of one coordinate and the plain values of the other. Consider the function <m>y=3\cdot 4^{2x}</m>. This can be placed into Matlab via the following commands:
+        </p>
+        <program language="matlab">
+            <input>
+                <![CDATA[
+                >> x = [-1:0.1:3]; %creates a vector of x from -1 to 3 with step size 0.1
+                >> y = 3*4.^(2*x); 
+                %the .^ tells Matlab to carry out the multiplication 
+                %component wise for the vector
+                >> figure(1)
+                >> plot(x,y);
+                >> title('Plot of x and y=3*4^{2x}')
+                >> figure(2)
+                >> plot(x,log(y));
+                >> title('Plot of x and log(y)=log(3*4^{2x})')    
+                ]]>
+            </input>
+        </program>
+        <p>
+            Compare the plots of <c>plot(x,y)</c> and <c>plot(x,log(y))</c>. Describe what is the advantage of using the semilogy plot. 
+        </p>
+    </statement>
+</exercise>
+
+<exercise>
+    <title>Question 1.B</title>
+    <statement> 
+        <p> 
+            The power of the semilogy plot comes from the identities we can use from the logarithm. Consider the following:
+            <md>
+                <mrow>y \amp= 3\cdot 4^{2x}</mrow>
+                <mrow>\log(y) \amp= \log(3\cdot 4^{2x})</mrow>
+                <mrow>\amp= \log(3) + 2x \log(4)</mrow>
+            </md>
+            Does this work help explain the results you found in Question A? Please explain the connection. 
+        </p>
+    </statement>
+</exercise>
+
+<exercise>
+    <title>Question 1.C</title>
+    <statement>
+        <p>
+            How would things change if you compared the semilogy plot of <m>y = 3\cdot 4^{2x}</m> and the semilogy plot of <m>y = 3\cdot 4^{5x}</m>? Be as complete and as specific in your answer as possible.
+        </p>
+    </statement>
+    <solution>
+        <p>
+            From 1.B we have <m>\log(y) = \log(3) + 2x \log(4)</m> for the first plot and <m>\log(y) = \log(3) + 5x \log(4)</m> for the second plot. Thus, the slope would increase from <m>2 \log(4)</m> to <m>5\log(4)</m>.
+        </p>
+    </solution>
+</exercise>
+
+<exercise>
+    <title>Question 1.D</title>
+    <statement>
+        <p>
+            Another tool to consider is the log-log plot, which plots the log of each coordinate. Consider the log-log plot of <m>y = 4x^3</m>, which can be given by:
+        </p>
+        <program language="matlab">
+            <input>
+                <![CDATA[
+                >> x = [0.1:0.01:5]; %creates a vector of x from 0.1 to 5 with step size 0.01
+                >> y = 4*x.^3; 
+                %the .^ tells Matlab to carry out the multiplication 
+                %component wise for the vector
+                >> figure(1)
+                >> plot(x,y);
+                >> title('Plot of x and y=4x^3')
+                >> figure(2)
+                >> plot(log(x),log(y));
+                >> title('Plot of x and log(y)=log(4x^3)')    
+                ]]>
+            </input>
+        </program>
+        <p>
+            Describe the differences between <c>plot(x,y)</c> and <c>plot(log(x),log(y))</c> in this case. 
+        </p>
+    </statement>
+</exercise>
+
+<exercise>
+    <title>Question 1.E</title>
+    <statement>
+        <p>
+            Use the logarithm rules (like we did in Question B) to derive the connection between the log-log plot for the function <m>y=4x^3</m>.
+        </p>
+    </statement>
+    <solution>
+        <p>
+            The equation <m>y = 4x^3</m> is transformed to: <m>\log(y) = \log(4x^3) = \log(4) + 3\log(x)</m>.
+        </p>
+    </solution>
+</exercise>
+
+<exercise>
+    <title>Question 1.F</title>
+    <statement>
+        <p>
+            Go back to question 3.A on Homework 1. We can use 
+            <me>\alpha \approx \frac{\ln \left| \frac{p_n-p}{p_{n-1}-p} \right|}{\ln \left| \frac{p_{n-1}-p}{p_{n-2}-p} \right|}</me>
+            to numerically estimate the order of convergence of a sequence <m>p_n</m> that converges to <m>p</m>. Write a MATLAB program that takes in input of a vector containing elements of a sequence plus input of the limiting value, which is then used to calculate the numerical estimate of <m>\alpha</m>. (Please remember that in MATLAB the command that is used for computing <m>\ln(x)</m> is actually <c>log(x)</c>.)
+        </p>
+    </statement>
+  
+</exercise>
+
+<p>
+    <alert>2. Taylor's Polynomial and Convergence</alert>
+</p>
+
+<exercise>
+    <title>Question 2.A</title>
+    <statement>
+        <p>
+            Use a Matlab script file to compute the second order, third order, fourth order, and fifth order Taylor's polynomial approximation of <m>\ln(x)</m> centered at <m>x_0=1</m> with user input of x value. You can use <c>logt.m</c> as a template for this question if you wish.
+        </p>
+    </statement>
+</exercise>
+
+<exercise>
+    <title>Question 2.B</title>
+    <statement>
+        <p>
+            Using the work from question 2.A, calculate the approximations for <m>x=1/4</m> and analyze the convergence pattern.
+        </p>
+    </statement>
+</exercise>
+
+<exercise>
+    <title>Question 2.C</title>
+    <statement>
+        <p>
+            Using the work from question 2.A, calculate the approximations for <m>x=4/3</m> and analyze the convergence pattern. How does this compare to the convergence pattern for question 2.B? What do you anticipate would happen if you calculated higher order terms in this case?  
+        </p>
+    </statement>
+</exercise>
+
+<exercise>
+    <title>Question 2.D</title>
+    <statement>
+        <p>
+            Using the work from question 2.A, calculate the approximations for <m>x=5/2</m> and analyze the convergence pattern. How does this compare to the convergence pattern for question 2.C? What do you anticipate would happen if you calculated higher order terms in this case?  
+        </p>
+    </statement>
+    <solution>
+        <p>
+            Notice that the sequence diverges since the Taylor series diverges in this case.
+        </p>
+    </solution>
+</exercise>
+
+<exercise>
+    <title>Question 2.E</title>
+    <statement>
+        <p>
+            What would change if the center point for the polynomial was changed to <m>x_0=3</m> for each of the questions above? 
+        </p>
+    </statement>
+</exercise>
+
+<p>
+    <alert>3. Linear Interpolation</alert>
+</p>
+<p>Please refer to the notes, lecture 4, for the introduction of linear interpolation.</p>
+
+<exercise>
+    <title>Question 3.A</title>
+    <statement>
+        <p>
+            Use Matlab to code up a function that completes the calculation of linear interpolation using the method developed in the notes. Your function should have the format of: <c>function [flag, y] = linterpm(x,x0,y0,x1,y1)</c>, where the data points are <m>(x_0, y_0)</m>, <m>(x_1, y_1)</m>, and the program will calculate <m>y</m> from the requested value of <m>x</m> in the input. The return values are <m>y</m> and a flag. 
+        </p>
+    </statement>
+</exercise>
+
+<exercise>
+    <title>Question 3.B</title>
+    <statement>
+        <p>
+            What can influence the accuracy of the method in 3.A?
+        </p>
+    </statement>
+</exercise>
+
+<exercise>
+    <title>Question 3.C</title>
+    <statement>
+        <p>
+            In the notes, <m>x_0</m> is less than <m>x_1</m>. Is it required in the method that <m>x_1 &gt; x_0</m>? Please explain your answer.  
+        </p>
+    </statement>
+</exercise>
+
+<exercise>
+    <title>Question 3.D</title>
+    <statement>
+        <p>
+            A flag is usually used for alerting for either inappropriate input and/or inappropriate output. Is there any places where a flag is needed for linear interpolation?
+        </p>
+    </statement>
+</exercise>
+
+<exercise>
+    <title>Question 3.E</title>
+    <statement>
+        <p>
+            Discuss how you would implement linear interpolation using Matlab if the input included four or five data points and the mandate was to linearly interpolate for a requested value <m>x</m>, which was located between two data points.
+        </p>
+    </statement>
+    <solution>
+        <p>
+            The primary issue is to search the data set to find the two data points that are closest the point that is being interpolated. A secondary test is to make sure the two data points do provide for interpolation with the x coordinate for one data point being smaller than the point to be interpolated and the other data point having an x value this is larger than the point being interpolated. Lastly, the data values should be distinct and have different x values. If the data set has two data points with the same x coordinate then that does force a conflict with interpolation.
+        </p>
+    </solution>
+</exercise>
+
+<exercise>
+    <title>Question 3.F</title>
+    <statement>
+        <p>
+            Create a MATLAB program that solves the problem in 3.E. The input in this case is a vector <c>x</c> that is made up of all the x values of the data and also the input of <c>y</c>, which is a vector made up of the corresponding y values in the same order as <c>x</c>. A crucial point is that the entries in <c>x</c> are not necessarily in increasing order. The user will also put in a single scalar value, <c>x0</c>, and the program needs to linearly interpolate to generate the interpolated value <c>y0</c>. Please include flags, where <c>flag = 0</c> is the program ran fine and any nonzero flag identifies problems with running the program. You can assume <c>x</c> and <c>y</c> will be numerical input. 
+        </p>
+    </statement>
+</exercise>
+
+<p>
+    <alert>4. Newton's Divided Difference</alert>
+</p>
+
+<exercise>
+    <title>Question 4.A</title>
+    <statement>
+        <p>
+            Please refer to the notes regarding Newton's Divided Difference. A significant test in programming is implementing divided difference as a Matlab program. Attempt programming a Matlab function that has the form: <c>function [flag, yp] = newdivdiff(x,y,degree,xp)</c>, where <c>x</c> is a vector of the x coordinates of a data set with the associated y values being stored in a vector <c>y</c>. Thus, the data set (1,1.3), (3,5.2), (7,8.3), and (9.1,11.6) would translate into the input of: <c>x=[1, 3, 7, 9.1]</c> and <c>y = [1.3, 5.2, 8.3, 11.6]</c>. The other inputs to the function include the degree of the approximation and <c>xp</c> is the value that is being interpolated to construct the y value that is associated with <c>xp</c> using Newton's divide difference and the user provided data set. The output is the interpolated value <c>yp</c> (comes from the fact that the interpolated value is <m>yp=f(xp)</m> with <m>f(x)</m> being the interpolating polynomial) and <c>flag</c> is a warning flag for any problems with the calculation. 
+        </p>
+    </statement>
+</exercise>
+
+<exercise>
+    <title>Question 4.B</title>
+    <statement>
+        <p>
+            What are the possible flags to worry about with the use of Newton's Divided Difference Method? How would you implement the flags you devised?
+        </p>
+    </statement>
+    <solution>
+        <p>
+            There are a few issues that can require the use of a flag. Data points that use the same x value and different y value is just as much of a conflict for Newton's Divided Difference as for any other interpolation method. The degree of the polynomial must be one less than number of data points, for example, if a data set contains 9 data points then degree of the polynomial must be 8 or lower.
+        </p>
+    </solution>
+</exercise>
+
+<exercise>
+    <title>Question 4.C</title>
+    <statement>
+        <p>
+            Apply your program to the data set: <c>x = [10, 15, 20, 22.5, 30]</c>, <c>y = [227.04, 362.78, 517.35, 602.97, 901.67]</c> interpolating the values for <c>xp</c> at 12.8, 22.5, and 27 using degree estimates of degree 2, 3, and 4 for each value to be interpolated. This data set is from example 2 in chapter 5 within section 3 of [KK09]. Please reflect on your results. 
+        </p>
+    </statement>
+</exercise>
+
+<exercise>
+    <title>Question 4.D</title>
+    <statement>
+        <p>
+            Apply your program to the data set: <c>x = [10, 12, 14, 16, 20, 22, 25]</c>, <c>y = [106.6, 94.1, 80.9, 93.8, 108.3, 110.1, 98.6]</c> interpolating the values for <c>xp</c> at 21, 22.5, and 27 using degree estimates of degree 2, 5, and 6 for each value to be interpolated. Please reflect on your results. 
+        </p>
+    </statement>
+</exercise>
+
+<exercise>
+    <title>Question 4.E</title>
+    <statement>
+        <p>
+            How did you verify your program is working correctly? What could negatively influence the accuracy of this method? Please be as complete as possible in your answer. 
+        </p>
+    </statement>
+</exercise>
+
 
 </exercises>
+
+<p>
+    <alert>References</alert>
+</p>
+<p>
+    [KK09], <c>Autar Kaw</c> and <c>Eric Kalu</c> <em>Numerical Methods with Applications (2nd ed.)</em>, 2009. Website: <url href="http://autarkaw.com/books/numericalmethods/index.html">book website</url>.
+</p>
+<p>
+    [LB16], <c>Leon Brin</c>, <em>Tea Time Numerical Analysis (Experiences in Mathematics) (2nd ed.)</em>, 2016. Website: <url href="http://lqbrin.github.io/tea-time-numerical/">lqbrin.github.io/tea-time-numerical</url>.
+</p>
+<p>
+    [Matlab], <url href="https://www.mathworks.com">www.mathworks.com</url>, August 2026.
+</p>
 </section>

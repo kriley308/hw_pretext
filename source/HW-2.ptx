@@ -9,7 +9,7 @@
     <title>Second homework set</title>
 <p>Use Matlab for the following problems.</p>
 
-<exercise>
+<exercise number=" ">
     <title>Question 1.A</title>
     <statement>
         <p> 
@@ -37,7 +37,7 @@
     </statement>
 </exercise>
 
-<exercise>
+<exercise number=" ">
     <title>Question 1.B</title>
     <statement> 
         <p> 
@@ -52,7 +52,7 @@
     </statement>
 </exercise>
 
-<exercise>
+<exercise number=" ">
     <title>Question 1.C</title>
     <statement>
         <p>
@@ -66,7 +66,7 @@
     </solution>
 </exercise>
 
-<exercise>
+<exercise number=" ">
     <title>Question 1.D</title>
     <statement>
         <p>
@@ -94,7 +94,7 @@
     </statement>
 </exercise>
 
-<exercise>
+<exercise number=" ">
     <title>Question 1.E</title>
     <statement>
         <p>
@@ -108,7 +108,7 @@
     </solution>
 </exercise>
 
-<exercise>
+<exercise number=" ">
     <title>Question 1.F</title>
     <statement>
         <p>
@@ -124,7 +124,7 @@
     <alert>2. Taylor's Polynomial and Convergence</alert>
 </p>
 
-<exercise>
+<exercise number=" ">
     <title>Question 2.A</title>
     <statement>
         <p>
@@ -133,7 +133,7 @@
     </statement>
 </exercise>
 
-<exercise>
+<exercise number=" ">
     <title>Question 2.B</title>
     <statement>
         <p>
@@ -142,7 +142,7 @@
     </statement>
 </exercise>
 
-<exercise>
+<exercise number=" ">
     <title>Question 2.C</title>
     <statement>
         <p>
@@ -151,7 +151,7 @@
     </statement>
 </exercise>
 
-<exercise>
+<exercise number=" ">
     <title>Question 2.D</title>
     <statement>
         <p>
@@ -165,7 +165,7 @@
     </solution>
 </exercise>
 
-<exercise>
+<exercise number=" ">
     <title>Question 2.E</title>
     <statement>
         <p>
@@ -179,7 +179,7 @@
 </p>
 <p>Please refer to the notes, lecture 4, for the introduction of linear interpolation.</p>
 
-<exercise>
+<exercise number=" ">
     <title>Question 3.A</title>
     <statement>
         <p>
@@ -188,7 +188,7 @@
     </statement>
 </exercise>
 
-<exercise>
+<exercise number=" ">
     <title>Question 3.B</title>
     <statement>
         <p>
@@ -197,7 +197,7 @@
     </statement>
 </exercise>
 
-<exercise>
+<exercise number=" ">
     <title>Question 3.C</title>
     <statement>
         <p>
@@ -206,7 +206,7 @@
     </statement>
 </exercise>
 
-<exercise>
+<exercise number=" ">
     <title>Question 3.D</title>
     <statement>
         <p>
@@ -215,7 +215,7 @@
     </statement>
 </exercise>
 
-<exercise>
+<exercise number=" ">
     <title>Question 3.E</title>
     <statement>
         <p>
@@ -229,7 +229,7 @@
     </solution>
 </exercise>
 
-<exercise>
+<exercise number=" ">
     <title>Question 3.F</title>
     <statement>
         <p>
@@ -242,7 +242,7 @@
     <alert>4. Newton's Divided Difference</alert>
 </p>
 
-<exercise>
+<exercise number=" ">
     <title>Question 4.A</title>
     <statement>
         <p>
@@ -251,7 +251,7 @@
     </statement>
 </exercise>
 
-<exercise>
+<exercise number=" ">
     <title>Question 4.B</title>
     <statement>
         <p>
@@ -265,7 +265,7 @@
     </solution>
 </exercise>
 
-<exercise>
+<exercise number=" ">
     <title>Question 4.C</title>
     <statement>
         <p>
@@ -274,7 +274,7 @@
     </statement>
 </exercise>
 
-<exercise>
+<exercise number=" ">
     <title>Question 4.D</title>
     <statement>
         <p>
@@ -283,7 +283,7 @@
     </statement>
 </exercise>
 
-<exercise>
+<exercise number=" ">
     <title>Question 4.E</title>
     <statement>
         <p>

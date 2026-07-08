@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xml:id="Homework-3" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Homework 3</title>
+  <p>
+    <alert>Summary:</alert>
+    <em>For the homework assignments it is allowed to collaborate with fellow students, tutors, the instructor, and any other resource.</em>
+  </p>
+<exercises xml:id="homework-set-3">
+    <title>Third homework set</title>
+
+<introduction>
+        <p>
+            <alert>Section 2.1 Bisection Method</alert>
+        </p>
+        <p>
+            Problems from [LB16] (use Matlab where appropriate): 1, 2, 3 a) c) g) i), 4, 5 a), 11, 12, and 19   
+        </p>
+        <note>
+            <p>
+                <em>[LB16] problem 5 part a):</em> Do three iterations of bisection using <m>g(x) = \sqrt{x}-\cos(x)</m> with interval [0,1].
+                First iteration <m>g(0.5) = -0.1705</m>, second iteration <m>g(0.75) = 0.1343</m>, and third iteration <m>g(0.625) = -0.0204</m>. Thus, the root is between 0.625 and 0.75.
+            </p>
+            <p>
+                <em>[LB16] problem 19:</em> A plot of <m>f(x) = \ln(x^4-x^3-7x^2+13x-5)</m> around the root at <m>x=1</m> reveals a shape of a parabola opening down. Thus, on either side of the root the value of <m>f(x)</m> is negative. Bisection would never work for this problem since there is never a sign change around this root.
+            </p>
+        </note>
+    </introduction>
+
+    <exercise number=" ">
+        <title>Question 1.A</title>
+        <statement>
+            <p>Describe the rate of convergence for the Bisection Method.</p>
+        </statement>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 1.B</title> 
+        <statement>
+            <p>The Bisection Method is known as a robust method. What could this mean compared to the Fixed Point Method, Newton's Method, and Secant Method?</p>
+        </statement>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 1.C</title>
+        <statement>
+            <p>Is there a way to speed up the Bisection Method?</p>
+        </statement>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 1.D</title>
+        <statement>
+            <p>In programming Bisection Method as a Matlab function file, how would you use program flags for the Bisection Method? What inputs would result in the Bisection Method not working and what flags would you need to design into the program?</p>
+        </statement>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 2 Introduction</title>
+        <statement>
+            <p>
+                <alert>Section 2.2 Fixed Point Method</alert>
+            </p>
+            <p>
+                Problems from [LB16] (use Matlab where appropriate): 4 a), b), c), d), 5 a), b), c), 9, 15
+            </p>
+        </statement>
+        <solution>
+            <p>
+                <em>[LB16] problem 15:</em> initial guess <m>x_0=-1</m> and root problem <m>x^3-3x+3=0</m>. An easy choice for the fixed point function is: <m>x = \frac{x^3+3}{3}</m>, which translates into <m>f(x) = \frac{x^3+3}{3}</m>. The use of <m>f(x)</m> as the fixed point function with initial guess of -1 will diverge. Another choice of fixed point function comes from <m>x = (3x-3)^{1/3}</m>, which translates into the fixed point function of <m>h(x) = (3x-3)^{1/3}</m>. The choice of <m>h(x)</m> with initial guess of -1 does converge to approximately -2.1038.
+            </p>
+        </solution>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 2.A</title>
+        <statement>
+            <p>In proposition 3 one of the criteria listed is: <m>h([a,b]) \subseteq [a,b]</m>. What does this notation imply and how could a person test if a function meets this criteria?</p>
+        </statement>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 2.B</title>
+        <statement>
+            <p>Theorem 4 states conditions that results in a guarantee that there is convergence. On the other hand, if <m>|f'(\hat{x})| &gt; 1</m> then does that guarantee no convergence?</p>
+        </statement>
+        <solution>
+            <p>The theorem is only one way so the fact that <m>|f'(\hat{x})| &gt; 1</m> doesn't force the method to diverge.</p>
+        </solution>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 2.C</title>
+        <statement>
+            <p>What should be the stopping criteria for a programming implementing the Fixed Point Method?</p>
+        </statement>
+        <solution>
+            <p>
+                There are two traditional approaches to this problem. A stopping condition of 
+                <me>|x_k-x_{k-1}| &lt; \text{tol},</me>
+                or 
+                <me>\frac{|x_k-x_{k-1}|}{|x_k|} &lt; \text{tol}.</me>
+                The last approach is suitable when it is known the root is not zero and it is not close to zero. If the root is close to zero then the first approach is a much better strategy.
+            </p>
+        </solution>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 2.D</title>
+        <statement>
+            <p>If the Fixed Point Method was implemented in a Matlab program then what flags should be included into the program?</p>
+        </statement>
+        <solution>
+            <p>For a well defined function, the real issue was checking for divergence. If <m>f(x_k)</m> goes too large then you would need to stop by the program and flag the result. Another issue it is possible for fixed point to oscillate between two different values and this would not diverge, but it would also not converge. Thus, you would need a maximum iteration count and flag results that exceed the maximum iteration count.</p>
+        </solution>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 4 Introduction</title>
+        <statement>
+            <p>
+                <alert>Section 2.4 Newton's Method and Secant Method</alert>
+            </p>
+            <p>
+                Problems from [LB16] (use Matlab where appropriate): 5 a), b), c), d), 6 a), b), c), d), 8, 11
+            </p>
+        </statement>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 4.A</title>
+        <statement>
+            <p>Answer problem 17 from [LB16] in section 2.4.</p>
+        </statement>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 4.B</title>
+        <statement>
+            <p>Answer problem 23 with parts a) b) and c) from [LB16] in section 2.4.</p>
+        </statement>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 4.C</title>
+        <statement>
+            <p>The big advantage that Newton's Method has is the potential to deliver quadratic convergence. State the mathematical definition of quadratic convergence and also describe how to spot quadratic convergence numerically.</p>
+        </statement>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 4.D</title>
+        <statement>
+            <p>Secant Method has the potential to deliver super linear convergence. Super linear convergence is better than linear convergence, but not as fast as quadratic convergence. Discuss the definitions of linear convergence and quadratic convergence and use this information to speculate on how to define super linear convergence.</p>
+        </statement>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 4.E</title>
+        <statement>
+            <p>True or False: Newton's Method always generates quadratic convergence. (Please explain your answer.)</p>
+        </statement>
+        <solution>
+            <p>False, if the derivative gets close to zero then that that can slow convergence or even stop convergence.</p>
+        </solution>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 4.F</title>
+        <statement>
+            <p>True or False: Secant Method always generates super linear convergence. (Please explain your answer.)</p>
+        </statement>
+        <solution>
+            <p>False, if the secant has a slope close to zero or is zero then that can slow convergence or even stop convergence.</p>
+        </solution>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 4.G</title>
+        <statement>
+            <p>Write a MATLAB program that implements the Seeded Secant Method where the user supplies an anonymous function for f, an initial condition x0, and a tolerance for the stopping condition <m>|x_k-x_{k-1}| &lt; \text{tol}</m>. A couple of things to consider for flags: divergence and failure to converge. How can you validate the answer is consistent with the original problem?</p>
+        </statement>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 5</title>
+        <statement>
+            <p>
+                <alert>Additional questions</alert>
+            </p>
+            <p>
+                Recall in the notes (lecture 5) the problem from [KK09] of the floating ball. The goal of that problem was to determine how much of the ball would remain under the surface of the water. The end result of the derivation was solving the equation:
+                <men xml:id="e-nonlinear-sample-1">4(0.055)^3(0.6)-3x^2(0.055)+x^3=0.</men>
+                Use one of the methods to find the root to <xref ref="e-nonlinear-sample-1"/> accurate to 0.0001.
+            </p>
+        </statement>
+        <solution>
+            <p>
+                Using Newton's Method and an initial guess of x=0.06 reveals:
+                <md>
+                    <mrow>x_0 \amp= 0.06</mrow>
+                    <mrow>x_1 \amp= 0.062366666666667</mrow>
+                    <mrow>x_2 \amp= 0.062377581218182</mrow>
+                    <mrow>x_3 \amp= 0.062377581513750</mrow>
+                </md>
+            </p>
+        </solution>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 6</title>
+        <statement>
+            <p>How do you know if the approximation you developed in question 5 is accurate to 0.0001?</p>
+        </statement>
+        <solution>
+            <p>We do know that we are accurate to limit of the sequence <m>x_k</m> to 0.00000001 since the digits between <m>x_2</m> and <m>x_3</m> agree to that level. We don't know if this is accurate to the exact root, but plugging in the value for <m>x_3</m> into the original function produces an answer in Matlab as -4.391018798566293e-18, which does provide support that we are approaching the value of a root and the method is consistent.</p>
+        </solution>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 7</title>
+        <statement>
+            <p>How do you know if the answer found in question 5 solves the physical problem?</p>
+        </statement>
+        <solution>
+            <p>See answer for problem 6.</p>
+        </solution>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 8</title>
+        <statement>
+            <p>
+                One reference that is good for finding applications is [AM96]. In this source it reference an equation related to modeling fluid flow through a pipe:
+                <me>\frac{8fL}{\pi^2 g D^5}Q^3 + hQ - \frac{550 \ eh_p}{\gamma} =0,</me>
+                where f is the friction coefficient of the pipe, L is the length of the pipe, g = gravitational acceleration, D is diameter of the pipe, <m>Q=VA</m> with V being flow velocity and A being cross sectional area, h=potential head, e=efficiency of the pump, <m>h_p</m>=horsepower of the pump, and <m>\gamma</m> is specific weight of the fluid. Consider the case L is 800 feet, f is 0.0185, diameter of the pipe is 6 inches, h is 5 feet, the pump has 6 horsepower with efficiency coefficient of 0.6, and the specific gravity of the fluid is 0.82 (this translates into <m>\gamma = 0.82 \cdot 62.4</m>). Use this information and one of the techniques in chapter 2 of [LB16] to estimate Q accurate to 0.001.
+            </p>
+        </statement>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 9</title>
+        <statement>
+            <p>How do you know if the answer in problem 8 is a solution to the given problem? (Be sure to explain.)</p>
+        </statement>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 10</title>
+        <introduction>
+            <p>Consider the function <m>h(x)=10-\cosh(x)</m>.</p>
+        </introduction>
+        <task>
+            <statement>
+                <p>MATLAB does have a root solver program that can be implement with the following:</p>
+                <console>
+                    <input><![CDATA[
+                    >> h = @(x)10-cosh(x);
+                    >> exact  = fzero(h,1.5)
+                    ]]></input>
+                    <output><![CDATA[
+                    exact =   2.993222846126381
+                    ]]></output>
+                </console>
+            </statement>
+        </task>
+        <task>
+            <statement>
+                <p>Using the solution from part a) as representing the exact answer. Use MATLAB and Newton's Method with initial guess of <m>x_0</m> to approximate the solution to <m>h(x)</m>. Use the output to plot iteration count versus <m>\log | \text{exact}-x_k |</m>.</p>
+            </statement>
+        </task>
+        <task>
+            <statement>
+                <p>Does the plot in part b) reveal anything regarding convergence?</p>
+            </statement>
+        </task>
+        <task>
+            <statement>
+                <p>Compare convergence plot of Newton's Method to Bisection Method where Bisection Method starts with the interval [1.5, 3.5].</p>
+            </statement>
+        </task>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 11</title>
+        <introduction>
+            <p>Consider the nonlinear system:</p>
+            <md>
+                <mrow>3x - \cos(yz) \amp= 1/2</mrow>
+                <mrow>x^2-81(y+0.1)^2 + \sin(z) \amp= -1.06</mrow>
+                <mrow>e^{-xy} + 20z \amp= \frac{3-10\pi}{3}</mrow>
+            </md>
+        </introduction>
+        <task>
+            <statement>
+                <p>
+                    a) Write the vector value function to transform this system into a root finding problem, i.e.
+                    <me>\vec F(\vec w) = \vec 0, \text{ where } \vec w = \begin{pmatrix} x \\ y \\ z \end{pmatrix}.</me>
+                </p>
+            </statement>
+            <solution>
+                <p>
+                    <me>\vec F(\vec w) = \begin{pmatrix} 3x - \cos(yz) - 1/2 \\ x^2-81(y+0.1)^2 + \sin(z) + 1.06 \\ e^{-xy} + 20z + \frac{10\pi-3}{3} \end{pmatrix}</me>
+                </p>
+            </solution>
+        </task>
+        <task>
+            <statement>
+                <p>b) Find the Jacobian matrix for this nonlinear system.</p>
+            </statement>
+            <solution>
+                <p>
+                    <me>J(\vec w) = \begin{pmatrix} 3 \amp z \sin(yz) \amp y \sin(yz) \\ 2x \amp -162 y - 16.2 \amp \cos(z) \\ -ye^{-xy} \amp -xe^{-xy} \amp 20\end{pmatrix}</me>
+                </p>
+            </solution>
+        </task>
+        <task>
+            <statement>
+                <p>c) Write the form of Newton's Method that would go with solving this system.</p>
+            </statement>
+            <solution>
+                <p>
+                    <me>\vec w_{k+1} = \vec w_k - J^{-1}(\vec w_k) \vec F(\vec w_k)</me>
+                </p>
+            </solution>
+        </task>
+        <task>
+            <statement>
+                <p>d) If you start with an initial guess of <m>\vec w_0 = \begin{pmatrix} 0.1 \\ 0.1 \\ -0.1 \end{pmatrix}</m> then discuss how you would calculate <m>\vec w_1</m>.</p>
+            </statement>
+            <solution>
+                <p>The method would start with the initial guess and iterate using the Newton's Method. A stopping condition that can be used is <m>\Vert \vec w_k - \vec w_{k-1} \Vert &lt; \text{tol}</m>. Of course, it would be wise to have a maximum iteration count as a safety in case the method diverges since divergence is possible with Newton's Method.</p>
+            </solution>
+        </task>
+    </exercise>
+
+</exercises>
+<p>
+    <alert>References</alert>
+</p>
+<p>
+    [AM96]<c> Bilal Ayyub</c> and <c> Richard McCuen</c>,<em> Introduction to Numerical Analysis (2nd ed.)</em>, 1996. 
+</p>
+<p>
+    [KK09], <c>Autar Kaw</c> and <c>Eric Kalu</c> <em>Numerical Methods with Applications (2nd ed.)</em>, 2009. Website: <url href="http://autarkaw.com/books/numericalmethods/index.html">book website</url>.
+</p>
+<p>
+    [LB16], <c>Leon Brin</c>, <em>Tea Time Numerical Analysis (Experiences in Mathematics) (2nd ed.)</em>, 2016. Website: <url href="http://lqbrin.github.io/tea-time-numerical/">lqbrin.github.io/tea-time-numerical</url>.
+</p>
+<p>
+    [Matlab], <url href="https://www.mathworks.com">www.mathworks.com</url>, August 2026.
+</p>
+
+
+</section>

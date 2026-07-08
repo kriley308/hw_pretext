@@ -1,19 +1,647 @@
 <?xml version="1.0" encoding="utf-8"?>
-<section xml:id="section-1" xmlns:xi="http://www.w3.org/2001/XInclude">
+<section xml:id="Homework-1" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>Homework 1</title>
-  <introduction>
-    <p>Some words</p>
-  </introduction>
-  <subsection xml:id="subsection-1">
-    <title>My First Subsection</title>
-    <p>Some more words</p>
-    <p>foo</p>
-    <figure>
-      <caption>A frog</caption>
-      <image source="frog.jpg" width="50%">
-        <description>A nice-looking frog with a longish description.</description>
-      </image>
-    </figure>
-    <p>Bar: <m>\foo</m></p>
-  </subsection>
+  <p>
+    <alert>Summary:</alert>
+    <em>For the homework assignments it is allowed to collaborate with fellow students, tutors, the instructor, and any other resource.</em>
+  </p>
+<exercises xml:id="homework-set-1">
+    <title>First homework set</title>
+    <p>
+    <alert>Section 1.1</alert> out of [LB16] Problems: 1, 2, 3, 4, 6, and 12 Use Matlab to solve problems: 7, 9, 10, 11, and 19
+</p>
+<p> 
+    <program>
+        <input>
+% Problem 2 in MATLAB
+>> abs(pi-3)
+ans =   0.141592653589793
+>> abs(pi-3)/pi
+ans =  0.045070341448628
+
+
+%  Problem 6 part a)
+ 
+>> abs(sqrt(2)-1.414)
+ans =  2.135623730952219e-04
+>> abs(sqrt(2)-1.414)/(sqrt(2))
+ans = 1.510114022219229e-04
+
+% part b)
+>> abs(10^(pi)-1400)
+ans =  14.544268632989315
+>> abs(10^(pi)-1400)/(10^(pi))
+ans =   0.010497822704619
+% Problem 7
+>> 1103*sqrt(8)/9801
+ans =   0.318309878440470
+%Problem 9
+% part a) 
+>> floor(log(234567))    
+ans = 12
+%part b) 
+>> exp(ceil(log(234567)))
+ans =  4.424133920089205e+05
+%part f)
+>> floor(cos(3)-nthroot(log(3),5))/ceil(atan(3)-exp(3))
+ans =  0.166666666666667
+% Problem 19
+a)
+>> x = 0:5;
+>> sum(1./factorial(x))
+ans =   2.716666666666666  
+</input>
+</program>
+</p>
+
+
+<exercise>
+    <title>Question 1.A</title>
+    <statement>
+        <p>
+            Ideally, a numerical method converges toward the exact answer of mathematical problem. However, in reality there are several different issues that can arise. A lack of consistency could mean that the method converges, but not to the solution to the mathematical problem. Describe how a person can check to make sure the method they have is being consistent.
+        </p>
+    </statement>
+    <solution>
+        <p>
+            To check for consistency, one can perform a refinement study (such as a grid or step-size refinement) and verify that the local truncation error approaches zero as the step size (<m>h</m> or <m>\Delta t</m>) approaches zero. Alternatively, the method can be tested against an analytical solution with known properties to ensure the error scales at the theoretical order of accuracy.
+        </p>
+    </solution>
+</exercise>
+
+<exercise>
+    <title>Question 1.B</title>
+    <statement>
+        <p>
+            The book and notes do reference the accumulation of error. Describe what can cause accumulation of error and what can be done to mitigate this issue.
+        </p>
+    </statement>
+</exercise>
+
+<exercise>
+    <title>Question 1.C</title>
+    <statement>
+        <p>
+            What is the advantage of using relative error versus using absolute error? When is it more advantageous to use absolute error?
+        </p>
+    </statement>
+</exercise>
+
+<exercise>
+    <title>Question 1.D</title>
+    <statement>
+        <p>
+            What are the differences between algorithmic error and floating point error?
+        </p>
+    </statement>
+</exercise>
+
+<exercise>
+    <title>Question 1.E</title>
+    <statement>
+        <p>
+            Are percentage error and absolute relative error the same thing?
+        </p>
+    </statement>
+    <solution>
+        <p> The simple answer is that they are not the same. The percentage error does have the conversion factor of multiplying by 100. In addition, percentage error is not always defined to be non-negative (depending on your source for the definition) while absolute relative error is forced to be non-negative by definition. We will generally prefer the use of absolute relative error and we will seldom discuss the percentage error, which is likely a sharp contrast to what you will see in other classes.
+            </p>
+    </solution>
+</exercise>
+
+<exercise>
+    <title>Question 1.F</title>
+    <statement>
+        <p>
+            The Brin book [LB16] and the class notes both reference big oh notation, which is mathematical notation to represent asymptotic convergence. This same concept is covered in the class notes in section 1.4. In MATH 373, the common use of big Oh is classify convergence as the step size, <m>h</m>, shrinks to zero. Prove that the second order Taylor's approximation of <m>f(x)=e^{x}</m> is <m>{\cal O}(h^{3})</m> where the center is 0 and <m>h=x-x_{0}</m>.
+        </p>
+    </statement>
+    <solution>
+        <p>
+            The analysis comes down to the remainder term <m>R_2(x) = \frac {f^{(3)}(x)(x-x_0)^3}{3!}</m>, this simplifies the error to be 
+ <men>\frac {e^{\xi}}6 (x-x_0)^3 = Mh^3.</men>
+ This follows from <m>h=x-x_0</m> and <m>\frac {e^{\xi}}6</m> is equal to some constant. Therefore, the approximation is <m>{\cal O}(h^3).</m>
+            </p>
+    </solution>
+</exercise>
+
+<exercise>
+    <title>Question 1.G</title>
+    <statement>
+        <p>
+            Consider a numerical method gives an estimate of <m>a_{h}</m>, which is an approximation to <m>a</m> using the step size of <m>h</m>. We are able to determine that
+            <md>
+                <mrow>\vert a-a_{h} \vert \le M(2h^{2} + 9h^{3}).</mrow>
+            </md>
+            What is the big oh estimate in this case?
+        </p>
+    </statement>
+    <solution>
+        <p> The measurement of big oh is how fast the error goes to zero as h goes to zero. Hence, terms with h to a higher power will converge faster to zero and the only elements that will slow convergence are the terms in the error expression that have <m>h</m> to a lower power. Therefore, our order in this case is <m>{\cal O}(h^2)</m>.
+            </p>
+    </solution>
+</exercise>
+
+<exercise>
+    <title>Question 1.H</title>
+    <statement>
+        <p>
+            Given that <m>a_{h}</m> converges to <m>a</m> and the error of a calculation using step size <m>h</m> results in
+            <md>
+                <mrow>a-a_{h} = h^{3}-4h^{3/2}.</mrow>
+            </md>
+            What is the big Oh estimate in this case?
+        </p>
+    </statement>
+    <solution>
+        <p> It is important to keep in mind that we are looking at absolute error so the real expression is <m> \vert a-a_h \vert \le \vert h^3-4h^{3/2}\vert </m>. As with the previous problem, the interest is to look at the lowest power to see what would converge the slowest as <m>h\rightarrow 0</m>, which in this case points to <m>{\cal O}(h^{3/2})</m>.
+            </p>
+    </solution>
+</exercise>
+
+<exercise>
+    <title>Question 1.I</title>
+    <statement>
+        <p>
+            Big oh also shows up in computer science, but the use is different. What is the main difference between the use of big oh in numerical analysis and how it is used in Computer Science?
+        </p>
+    </statement>
+    <solution>
+        <p> The application in Computer Science is looking for asymptotic growth as <m>n \rightarrow \infty</m>, but in Numerical Analysis our concern is what is happening as step size gets smaller, i.e. <m>h \rightarrow 0</m>. Thus, the analysis in Computer Science will often look at the highest powers in the expression involving <m>n</m> since it is looking at growth, while Numerical Analysis has a concern of identifying the terms with the lowest powers of <m>h</m>. It turns out the two concepts enjoy a connection since we will often define <m>h = \frac {b-a}n</m> and so the growth of <m>n</m> can be tied to the shrinking of <m>h</m>.
+            </p>
+    </solution>
+</exercise>
+
+<p>
+    <alert>Section 1.2</alert> out of [LB16] Problems: 2, 3, 4, 5, 7, 14, 16, 21, and 23 Use Matlab to solve problems: 1, 8, 10, and 26
+</p>
+<p>Problem 1 part g)</p>
+<p> <m> f(x) = \cos^2(x);</m> <m> f'(x) = -2 \cos(x) \sin(x);</m> <m>f''(x) = 2 \sin^2(x) - 2 \cos^2(x);</m> and <m> f'''(x) = 8 \cos(x) \sin(x);</m> and <m> f^{(4)}(x)=8(\cos^2(x) - \sin^2(x)).</m> Thus, <m> T_3(x) = 1 - x^2</m> with <m>R_3(x) = f^{(4)}(\xi) \frac {x^4}{4!}</m> </p>
+
+<p> Problem 7 <m>f(x) = \cosh(x)</m>, <m>R_{43}(x) = \frac {f^{(44)}(\xi) (x-x_0)^{44}}{44!}</m>, which for the given <m>f(x)</m> it follows that <m> R_{43}(x) = \frac {\cosh(\xi) (x-x_0)^{44}}{44!}</m></p>
+<p> Problem 14 <m>f(x) = e^x \cos (x)</m>; <m> f'(x) = e^x \cos(x) - e^x \sin(x)</m>; <m> f''(x) = -2 e^x \sin(x)</m>; and <m> f'''(x)=-2e^x(\sin (x) + \cos (x))</m>. It follows that <m> P_2(x) = 1 + x</m> and <m> R_2(x) = f''''(\xi) \frac {x^3}{3!}</m>.</p>
+<p>
+a) Error bound using the remainder estimating <m> f(0.5)</m> using <m> R_2(0.5)</m> translates into an upper bound of <m> f'''(x)</m> over the interval of <m>(0,0.5)</m>. The upper bound of <m>\sin (x) + \cos (x)</m> is <m> \sqrt{2}</m> and so the upper bound for <m> R_2(0.5) = 2\sqrt{2}*e^{0.5}\frac {0.5^3}{3!} \approx 0.0972</m>. Note that the actual absolute error is <m> \vert f(0.5) - P_2(0.5)\vert \approx  0.0531</m>.</p>
+
+<p> b) Repeat the bound process for the interval <m> [0,1]</m>, which means that <m> R_2(0.5) = 2e^{1}\frac {1^3}{3!} \approx 0.9061</m>.  Note the actual absolute error is  <m> \vert f(1) - P_2(1)\vert \approx  0.5313</m>.</p>
+
+<p> c) Estimate the integral of <m> \int_0^1 f(x) \  dx</m> by calculating <m> \int_0^1 P_2(x) \ dx</m>, which in this case  <m> \int_0^1 P_2(x) \ dx = 1.5</m></p>
+
+<p> d) Find an upper bound of error by calculating <m> \int_0^1\vert R_2(x) \vert \ dx </m>. An estimate to use in this case is that <m> \vert R_2(x) \vert \le 2e^1\frac {x^3}6</m>, which results in <m> \int_0^1  2e^1\frac {x^3}6 \ dx \approx  0.2265 </m>. The actual error of <m> \biggr \vert  \int_0^1 f(x)-P_2(x) \ dx \biggr \vert \approx 0.1220</m> </p>
+
+<exercise>
+    <title>Question 2.A</title>
+    <statement>
+        <p>
+            In another book, one can find the expression for the Taylor's Polynomial as:
+            <m>T_{n}(x) = \sum_{j=0}^{n} \biggr ( \frac{f^{(j)}(x)}{j!}(x-x_{0})^{j} \biggr )</m>
+            Is the expression above equivalent to the definition ([LB16]) in the book given in section 2? Please explain your answer.
+        </p>
+    </statement>
+    <solution>
+        <p> This solution has a typographical error. Notice the evaluation of <m> f^{(j)}(x)</m> is at <m>x</m> when it should be at <m>x_0</m>. Hence, it follows that <m>T_n(x) = \sum_{j=0}^n \biggr ( \frac {f^{(j)}(x_0)}{j!}(x-x_0)^j \biggr )</m> is an equivalent representation of the Taylor Polynomial of degree n.
+            </p>
+    </solution>
+</exercise>
+
+<exercise>
+    <title>Question 2.B</title>
+    <statement>
+        <p>
+            In a Taylor Polynomial approximation, the actual function is not known and that certainly means that <m>f^{(n)}(x)</m> is not known. However, suppose it can be determined that <m>\vert f^{(n)}(x)\vert</m> is decreasing over the interval that contains <m>x_{0}</m> and <m>x</m>. Explain how the status of a decreasing <m>\vert f^{(n)}(x)\vert</m> would help in coming up with an error bound estimate for a Taylor's Polynomial of degree <m>n-1</m>.
+        </p>
+    </statement>
+    <solution>
+        <p>  The remainder term for a polynomial of degree n-1 is given as: <m> R(x) = \frac {f^n(\xi)}{n!}(x-x_0)^n</m>. If <m> \vert f^n(x) \vert</m> is decreasing then that means the largest value of <m> \vert f^n(x) \vert</m>  is on the left boundary of the interval. In the case <m> x_0 \lt x</m> this means <m>\vert f^n(x_0)\vert \ge \vert f^n(x) \vert</m> for all <m>x</m> in the interval  and the error is bounded by: <m>\vert \frac {f^n(x_0)}{n!}(x-x_0)^n \vert</m>. 
+            </p>
+    </solution>
+</exercise>
+
+<exercise>
+    <title>Question 2.C</title>
+    <statement>
+        <p>
+            In the remainder term, <m>R_{n}(x) = \frac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_{0})^{n+1}</m>, the theorem guarantees that <m>\xi</m> is in between <m>x</m> and <m>x_{0}</m>. Does the theorem apply if <m>x>x_{0}</m>, or <m>x&#x3C;x_{0}</m>, or both cases? Please explain your answer.
+        </p>
+    </statement>
+</exercise>
+
+<exercise>
+    <title>Question 2.D</title>
+    <statement>
+        <p>
+            The remainder term, <m>R_{n}(x)</m> is often called the error term since it contains the error between <m>f(x)</m> and <m>T_{n}(x)</m>. Review the mathematical expression of <m>R_{n}(x)</m> and describe the elements that drive convergence of <m>T_{n}(x)</m> to <m>f(x)</m> (there should be three different features to discuss).
+        </p>
+    </statement>
+</exercise>
+
+<p>
+    <alert>Section 1.3</alert> out of [LB16] talks about convergence
+</p>
+
+<exercise>
+    <title>Question 3.A</title>
+    <introduction>
+        <p>
+            Use Matlab to numerically estimate the rate of convergence of the sequence:
+        </p>
+    </introduction>
+    <task>
+        <statement>
+            <p>a) <m>\frac{n^{2}}{1+n^{2}}\rightarrow 1</m></p>
+        </statement>
+        <solution><p> This can be estimated by a calculator or by Matlab. The use of Matlab:</p>
+<program><input>
+>> p = @(x) x.^2./(1+x.^2);
+>> ps = 1;
+>> n=10000;
+>> numerator = log(abs((p(n+2)-ps)/(p(n+1)-ps)));
+>> denominator = log(abs((p(n+1)-ps)/(p(n)-ps)));
+>> alpha = numerator/denominator
+alpha = 0.9999
+</input></program>
+<p>Alpha converging to 1 means the order of convergence is linear (<m> alpha =1</m>).</p>
+        </solution>
+    </task>
+    <task>
+        <statement>
+            <p>b) <m>\frac{n!}{n^{n}}\rightarrow 0</m></p>
+        </statement>
+    </task>
+    <task>
+        <statement>
+            <p>c) <m>(1 + \frac{1}{n})^{n} \rightarrow e</m></p>
+        </statement>
+        <solution><p>In MATLAB we can use the estimate:</p><program><input>
+>> p = @(x) x.^2./(1+x.^2);
+>> ps = exp(1);
+>> n=10000;
+>> numerator = log(abs((p(n+2)-ps)/(p(n+1)-ps)));
+>> denominator = log(abs((p(n+1)-ps)/(p(n)-ps)));
+>> alpha = numerator/denominator
+</input></program>
+<p><m>alpha \approx 0.9996</m></p>
+
+        </solution>
+    </task>
+    <task>
+        <statement>
+            <p>d) <m>\frac{1 + \cos (5n)}{n^{3} + 1}\rightarrow 0</m></p>
+        </statement>
+    </task>
+    <task>
+        <statement>
+            <p>e) <m>\lim_{h \rightarrow 0}\frac{h^{2} + \cos (h) - e^{h}}{h} = -1</m>.</p>
+        </statement>
+    </task>
+</exercise>
+
+<exercise>
+    <title>Question 3.B</title>
+    <introduction>
+        <p>
+            Consider the sample program of pracs1.m that runs an algorithm to compute partial sums of the series <m>\sum_{k=1}^{\infty}\frac{1}{k^{2}}</m>. The program takes input of the tolerance and the maximum number of iterations (or the length of the sub-series).
+        </p>
+    </introduction>
+    <task>
+        <statement>
+            <p>
+                a) What is the implication of the stopping tolerance? Does the stopping tolerance represent absolute error? Explain what the stopping tolerance represents.
+            </p>
+        </statement>
+       
+    </task>
+    <task>
+        <statement>
+            <p>
+                b) If we pick stopping tolerance of <m>0.001</m> then what does that mean and how is it related to absolute error?
+            </p>
+        </statement>
+    </task>
+    <task>
+        <statement>
+            <p>
+                c) It turns out the exact value of this series is <m>\frac{\pi^{2}}{6}</m>. Use this fact to numerically estimate convergence.
+            </p>
+        </statement>
+    </task>
+</exercise>
+
+<exercise>
+    <title>Question 3.C</title>
+    <statement>
+        <p>
+            The program of pracs2.m is a function that converts Celsius to temperature measured in Fahrenheit. Write a program the converts Fahrenheit to Celsius. Describe how you would test this program.
+        </p>
+    </statement>
+</exercise>
+
+<exercise>
+    <title>Question 3.D</title>
+    <statement>
+        <p>
+            Consider the process of using IEEE single precision format to convert binary to a decimal number. For this problem, s = 1 the 8 bits for the exponent are given by:
+        </p>
+        <tabular left="minor">
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <row bottom="minor">
+                <cell colspan="8"/>
+            </row> 
+            <row bottom="minor">
+                <cell>1</cell>
+                <cell>0</cell>
+                <cell>0</cell>
+                <cell>0</cell>
+                <cell>1</cell>
+                <cell>0</cell>
+                <cell>0</cell>
+                <cell>1</cell>
+            </row>
+        </tabular>
+        <p>
+            and the 23 bits for the mantissa are:
+        </p>
+        <tabular left="minor">
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <col halign="center" right="minor"/>
+            <row bottom="minor">
+                <cell colspan="23"/>
+            </row>
+            <row bottom="minor">
+                <cell>0</cell>
+                <cell>1</cell>
+                <cell>0</cell>
+                <cell>0</cell>
+                <cell>1</cell>
+                <cell>1</cell>
+                <cell>0</cell>
+                <cell>0</cell>
+                <cell>0</cell>
+                <cell>0</cell>
+                <cell>0</cell>
+                <cell>0</cell>
+                <cell>0</cell>
+                <cell>0</cell>
+                <cell>0</cell>
+                <cell>0</cell>
+                <cell>0</cell>
+                <cell>0</cell>
+                <cell>0</cell>
+                <cell>0</cell>
+                <cell>0</cell>
+                <cell>0</cell>
+                <cell>0</cell>
+            </row>
+        </tabular>
+        <p>
+            Use this information to compute the decimal version of this number.
+        </p>
+    </statement>
+    <solution>
+        <p>It follows that <m> t=2^7+2^3+2^0=137</m> and <m> m=2^{-2}+2^{-5}+2^{-6}=0.296875</m>, which means our number is: <m> -1(1+m)2^{t-127}=-1328</m>
+            </p>
+    </solution>
+</exercise>
+
+<exercise>
+    <title>Question 3.E</title>
+    <statement>
+        <p>
+            In the notes, the discussion mentions that the mantissa is really the keeper for the number of significant digits stored in a machine number. Explain the connection between significant digits and the mantissa.
+        </p>
+    </statement>
+</exercise>
+
+<exercise>
+    <title>Question 3.F</title>
+    <statement>
+        <p>
+            What is machine epsilon and how does it relate to machine arithmetic?
+        </p>
+    </statement>
+</exercise>
+
+<exercise>
+    <title>Question 3.G</title>
+    <statement>
+        <p>
+            In some cases a numerical software package will give the message of: overflow, what is overflow and what does it imply in terms of computing? 
+        </p>
+    </statement>
+</exercise>
+
+<p>
+    <alert>Section 4: Calculator Practice</alert>
+</p>
+<p>
+    It is useful to clarify the use of the calculator so things are clear on exams. A non-graphing calculator is allowed on exams and will be needed to do some of the calculations. This section is a good opportunity to practice with your calculator so work done on exams is done correctly.
+</p>
+
+<exercise>
+    <title>Question 4.A</title>
+    <introduction>
+        <p>Recall that <m>e \approx 2.718281828</m>.</p>
+    </introduction>
+    <task>
+        <statement>
+            <p>Find the approximation to <m>e</m> that is accurate to the nearest 0.001. (Multiple choice: 2.718, 2.719, 2.717, or 2.71830)</p>
+        </statement>
+    </task>
+    <task>
+        <statement>
+            <p>Find the approximation that is accurate to the nearest 0.0001. (Multiple choice: 2.718, 2.7182, 2.7183, or 2.71828)</p>
+        </statement>
+    </task>
+</exercise>
+
+<exercise>
+    <title>Question 4.B</title>
+    <introduction>
+        <p>Consider <m>f(x) =\frac{e^{x} - e^{-x}}{x}</m></p>
+    </introduction>
+    <task>
+        <statement>
+            <p>Calculate <m>f(0.1)</m> accurate to the nearest 0.001. Multiple choice (2, 2.003, 2.0033, or 2.002)</p>
+        </statement>
+    </task>
+</exercise>
+
+<exercise>
+    <title>Question 4.C</title>
+    <introduction>
+        <p>Consider <m>g(x) = \frac{x\cos(x) - \sin(x)}{x-\sin (x)}</m></p>
+    </introduction>
+    <task>
+        <statement>
+            <p>Calculate <m>g(0.1)</m> accurate to the nearest 0.0001. Multiple choice (-1.5, -1.999, -1.9999, -2, or 1)</p>
+        </statement>
+    </task>
+</exercise>
+
+<exercise>
+    <title>Question 4.D</title>
+    <statement>
+        <p>
+            Consider example 5.13 from [JR13] where radiation heat flux for a boiler tube is calculated from
+            <md>
+                <mrow>q = \epsilon \sigma (T^{4}_{F} - T^{4}_{S}),</mrow>
+            </md>
+            where <m>\epsilon</m> is emissivity of the surface of the boiler with <m>\epsilon = 0.9</m>, <m>\sigma</m> is the Stefan-Boltzmann constant with <m>\sigma = 1.355 \times 10^{-12}\ \frac{\text{cal}}{s\cdot\text{cm}^{2}\cdot\text{K}^{4}}</m>, <m>T_{F} = 3300 \ ^{o}\text{F}</m> is the furnace temperature, and <m>T_{S} = 3000 \ ^{o}\text{F}</m> is the temperature of the surface of the boiler tube. Use Matlab and the given information to calculate q.
+        </p>
+        <ul>
+            <li>
+                <p>
+                    Multiple choice: 45.8436, 45.8436 <m>\frac{\text{cal}}{s\cdot\text{cm}^{2}}</m>, 45.8436 cal, 6.5679, 6.5679 <m>\frac{\text{cal}}{s\cdot\text{cm}^{2}}</m>, or 6.5679 cal.
+                </p>
+            </li>
+        </ul>
+    </statement>
+</exercise>
+
+<p>
+    Notes on working your calculator:
+    <ul>
+        <li><p>Keep all your calculations in your calculator with as much storage as possible and round ONLY at the end.</p></li>
+        <li><p>Make sure you use radian measure for trigonometry functions, unless otherwise directed.</p></li>
+        <li><p><alert>Make sure units of measure match</alert>.</p></li>
+        <li><p>Be sure to list the units for anything that has a specific unit of measure.</p></li>
+        <li><p>Nearest 0.001 is a specific value.</p></li>
+        <li><p>If in doubt list as many digits as possible in final answer.</p></li>
+    </ul>
+</p>
+
+<p>
+    <alert>Section 5: Programming Practice</alert>
+</p>
+
+<exercise>
+    <title>Question 5.A</title>
+    <task>
+        <p>
+            Consider the case of a temperature profile of a rod given by <m>T(x) = T_{0} + qx^{2}</m>, where <m>T_{0} = 20^{O}</m> C, <m>q=5</m>, and <m>0\le x \le 1</m>. To match up units <m>q</m> has units of Celsius per cm <m>^{2}</m> and x is in measured in centimeters. Generate a plot of x vs. T(x) using Matlab.
+        </p>
+        <solution>
+            <p>
+                There are several ways to do this, but one example:
+<program><input>
+>> x = 0:0.01:1;
+>> T0 = 20; q=5;
+>> T = T0 + q*x.^2;
+>> plot(x,T); xlabel('x (cm)'); 
+>> ylabel('T (^OC)'); title('Plot of temp in rod in Celsius');
+</input></program>
+            </p>
+        </solution>
+    </task>
+    <task>
+        <statement><p>a) What step size did you think worked best for this curve?</p></statement>
+        <solution><p>There isn't an object answer to this question. The example used 0.01, but one could use larger or smaller step size to generate results.</p></solution>
+    </task>
+    <task>
+        <statement><p>b) How small can you make the step size?</p></statement>
+        <solution><p>There are two constraints to consider. If you select a step size that is too small then the size of x could run out of memory. In terms of machine arithmetic, we can't pick a step size smaller than machine epsilon.</p></solution>
+    </task>
+    <task>
+        <statement><p>c) If <m>x</m> was not given a bound in the problem then would there be any restrictions for <m>x</m> in terms of what Matlab can handle?</p></statement>
+        <solution><p>There are two constraints to consider. In machine arithmetic, x could run into overflow. It is more likely T would encounter overflow since it involves the square of x. In terms of the physical application, there are limits to how long a rod can be made and how far heat could distribute across a long rod. </p></solution>
+    </task>
+</exercise>
+
+<exercise>
+    <title>Question 5.B</title>
+    <introduction>
+        <p>
+            Consider the discrete model for Newton's Law of Cooling
+            <md>
+                <mrow>T_{n+1}= T_{n} + h \cdot (-k(T_{n} - T_{\text{env}})),</mrow>
+            </md>
+            where <m>T_{n}</m> is the temperature at step n, <m>T_{\text{env}}</m> is the ambient temperature, <m>k</m> is a cooling constant, and <m>h</m> is the step size between steps in time. Consider the case when <m>T_{0} = 90</m>, <m>k = 0.1</m>, <m>h=1</m>, and <m>T_{\text{env}}=25</m>. Write a Matlab program that would do 30 iterations of this model in a loop.
+        </p>
+    </introduction>
+    <task>
+        <statement><p>a) What would help make this more accurate?</p></statement>
+    </task>
+    <task>
+        <statement><p>b) What should we expect to happen as time gets larger (run the loop for more iterations)?</p></statement>
+    </task>
+    <task>
+        <statement><p>c) Would this model apply if we had an example where <m>T_{\text{env}}</m> is larger than <m>T_{0}</m>?</p></statement>
+    </task>
+</exercise>
+
+<exercise>
+    <title>Question 5.C</title>
+    <statement>
+        <p>
+            The sample program of pracs3.m implements the computation of the Maclaurin Polynomial for the function <m>f(x) = x^{4}-2x^{2}+x-3</m>. Adjust this program to calculate the Maclaurin Polynomial for <m>g(x)=\frac{1}{3} x^{5} - x^{3}+\frac{1}{2} x^{2} + x +1</m>.
+        </p>
+    </statement>
+</exercise>
+
+<exercise>
+    <title>Question 5.D</title>
+    <statement>
+        <p>
+            The sample program of pracs3.m implements the computation of the Maclaurin Polynomial for the function <m>f(x) = x^{4}-2x^{2}+x-3</m>. Adjust this program to calculate the Maclaurin Polynomial for <m>h(x) = \cos (x)</m>.
+        </p>
+    </statement>
+</exercise>
+
+<exercise>
+    <title>Question 5.E</title>
+    <statement>
+        <p>
+            What are the rules of thumb discussed in class that can increase error due to machine round off?
+        </p>
+    </statement>
+</exercise>
+
+</exercises>
+
+<p>
+    <alert>References</alert>
+</p>
+<p>
+    [CC10], <c>Steven Chapra</c> and <c>Raymond Canale</c>, <em>Numerical Methods for Engineers (6 ed.)</em>, 2010.
+</p>
+<p>
+    [JR13], <c>James Riggs</c>, <em>Computational Methods for Engineers with Matlab applications</em>, 2013.
+</p>
+<p>
+    [KK09], <c>Autar Kaw</c> and <c>Eric Kalu</c> <em>Numerical Methods with Applications (2nd ed.)</em>, 2009. Website: <url href="http://autarkaw.com/books/numericalmethods/index.html">book website</url>.
+</p>
+<p>
+    [LB16], <c>Leon Brin</c>, <em>Tea Time Numerical Analysis (Experiences in Mathematics) (2nd ed.)</em>, 2016. Website: <url href="http://lqbrin.github.io/tea-time-numerical/">lqbrin.github.io/tea-time-numerical</url>.
+</p>
+<p>
+    [Matlab], <url href="https://www.mathworks.com">www.mathworks.com</url>, August 2024.
+</p>
 </section>

@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xml:id="Homework-5" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Homework 5</title>
+
+<p>
+    <alert>Summary:</alert>
+    <em>For the homework assignments it is allowed to collaborate with fellow students, tutors, the instructor, and any other resource.</em>
+  </p>
+  
+<exercises xml:id="fifth-homework-set">
+ <title>Fifth Homework Set</title>
+
+<p><alert>Numerically Solving Initial Value Problems</alert></p>
+
+<p><alert> Section 6.1 and 6.2 </alert>
+Problems from [LB16]: 6.1 problem 4 and 6.2 problems 1 and 2 parts a) b) and c)</p>
+
+<exercise number="">
+    <title>Question 1.A</title>
+    <statement>Write a program in Matlab that would implement Euler's Method. The function should have the structure: [approx] = euler(myfun,t0,y0,dt,n) where myfun is an anonymous function for <m> \frac {dy}{dt}=f(t,y)</m>, t0 is the initial time value, y0 is the initial y value, dt is the step size, and n is the number of steps.   </statement>
+    <solution>See example on D2L of euler.m </solution>
+    </exercise>
+
+<exercise number=""> <title>Question 1.B</title>
+<statement>Write a program in Matlab that would implement Modified Euler's Method with a similar structure as the program in Question 1.A. </statement></exercise>
+
+<exercise number="">
+        <title>Question 1.C</title>
+        <statement>
+            <p>For each of the following, calculate the absolute error between Euler's Method and the analytical answer for: <m>\Delta t =0.1</m> for ten steps, <m>\Delta t =0.05</m> for 20 steps, and <m>\Delta t = 0.01</m> for 100 steps. Repeat the same calculations using Modified Euler.</p>
+            <ul marker="">
+                <li><p>a) <m>y' = t-\sin(t)</m>; <m>\quad y(0)=3</m></p></li>
+                <li><p>b) <m>y' = t-y</m>; <m>\quad y(0)=4</m></p></li>
+                <li><p>c) <m>y' = e^{-t}-2y</m>; <m>\quad y(0)=5</m></p></li>
+                <li><p>d) <m>y' = 2yt</m>; <m>\quad y(0)=-2</m></p></li>
+                <li><p>e) <m>y' = e^{-t}-y</m>; <m>\quad y(1)=2e</m></p></li>
+            </ul>
+        </statement>
+        <solution>
+            <p>For part b), using integration factors we can solve and get the analytical solution of <m>y=t-1+5e^{-t}</m>.</p>
+            <console>
+                <input><![CDATA[
+                >> [approx] = euler(@(t,y) t-y,0,4,0.1,10);
+                >> soln = @(t) t-1+5*exp(-t);
+                >> abs(soln(1)-approx)
+                ]]></input>
+                <output><![CDATA[
+                ans = 0.0960
+                ]]></output>
+                <input><![CDATA[
+                >> [approx] = euler(@(t,y) t-y,0,4,0.05,20);
+                >> abs(soln(1)-approx)
+                ]]></input>
+                <output><![CDATA[
+                ans = 0.0470
+                ]]></output>
+                <input><![CDATA[
+                >> [approx] = euler(@(t,y) t-y,0,4,0.01,100);
+                >> abs(soln(1)-approx)
+                ]]></input>
+                <output><![CDATA[
+                ans = 0.0092
+                ]]></output>
+            </console>
+            <p>We see that Modified Euler will converge faster with the following results:</p>
+            <p>
+                <ul marker="disc">
+                    <li><p><m>\Delta t = 0.1 \implies \text{abs}(soln(1)-approx) = 0.0033</m></p></li>
+                    <li><p><m>\Delta t = 0.05 \implies \text{abs}(soln(1)-approx) = 7.9590\times 10^{-4}</m></p></li>
+                    <li><p><m>\Delta t = 0.01 \implies \text{abs}(soln(1)-approx) = 3.0888\times 10^{-5}</m></p></li>
+                </ul>
+            </p>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 1.D</title>
+        <statement>
+            <p>Describe how the results in Question 1.C reveal the fact that Euler's Method is first order and Modified Euler's is second order.</p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 1.E</title>
+        <statement>
+            <p>For the initial value problem, <m>\frac{dy}{dt} = t^2-y^2</m> with <m>y(0)=1</m>. Derive the formula for the second order Taylor's Method (as described in section 6.2 of the text).</p>
+        </statement>
+        <solution>
+            <p>
+                For this portion, keep in mind that <m>y'=f(t,y) = t^2-y^2</m>. It follows the second order Taylor's expansion takes the form:
+                <me>y_{\text{new}} = y + h y' + \frac{h^2}{2} y'',</me>
+                but since <m>y' = f(t,y) = t^2 -y^2</m> it follows that:
+                <me>y_{\text{new}} = y + h f(t,y) + \frac{h^2}{2} \frac{d}{dt}f(t,y).</me>
+                The chain rule produces the fact that <m>\frac{d}{dt}f(t,y) = f_t + f_y y'</m> and so it follows that:
+                <md>
+                    <mrow>y_{\text{new}} \amp= y + h f(t,y) + \frac{h^2}{2} \frac{d}{dt}f(t,y)</mrow>
+                    <mrow>\amp= y + h (t^2-y^2) + \frac{h^2}{2} (2t -2y(t^2-y^2)).</mrow>
+                </md>
+                The final expression is used for second order Taylor's for the given initial value problem.
+            </p>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 1.F</title>
+        <statement>
+            <p>Why is local truncation error a better way to evaluate numerical methods for solving initial value problems compared to global error? Please be as complete as possible.</p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 1.G</title>
+        <statement>
+            <p>What is the connection between Modified Euler's Method and the use of slope fields in ordinary differential equations? Please be as complete as possible.</p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 1.H</title>
+        <statement>
+            <p>
+                Recall the pendulum model from section 6.1:
+                <me>\frac{d^2 \theta}{dt^2} + \left(\frac{c}{m}\right)\frac{d\theta}{dt} + \frac{g}{\ell} \sin(\theta) = 0,</me>
+                if it is given <m>\theta(0)=2.2</m> and <m>\frac{d\theta}{dt}(0)=-1.1</m> then use this information to convert this second order differential equation to a first order system. (Please also convert the initial value information into the first order system.)
+            </p>
+        </statement>
+        <solution>
+            <p>
+                Let <m>z = \frac{d\theta}{dt}</m> then the second order problem turns into the following first order system:
+                <md>
+                    <mrow>\frac{d\theta}{dt} \amp= z, \quad \theta(0) = 2.2</mrow>
+                    <mrow>\frac{dz}{dt} \amp= \frac{-cz}{m} - \frac{g}{\ell} \sin(\theta), \quad z(0)=-1.1</mrow>
+                </md>
+            </p>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 1.J</title>
+        <statement>
+            <p>Use Modified Euler's to approximate the solution to <m>\frac{dy}{dt}=t-y^2</m> with <m>y(0)=1</m>. Approximate the value at t=2 using a step size of <m>\Delta t=0.1</m> and compare the results with a step size of <m>\Delta t=0.05</m>. Does this have an analytical solution?</p>
+        </statement>
+        <solution>
+            <p>See example on D2L of <c>modified_euler.m</c>. This problem cannot be separated and it is not linear, which means the two techniques we have been using to solve first order equations will not work on this problem. The existence and uniqueness theorem does guarantee that we have a unique solution to this initial value problem, but we lack the tools to find the analytical solution.</p>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 1.K</title>
+        <statement>
+            <p>Calculate by hand the use Modified Euler's to approximate the solution to <m>\frac{dy}{dt}=t-y^2</m> with <m>y(0)=1</m>. Take two steps with <m>\Delta t = 0.1</m>.</p>
+        </statement>
+    </exercise>
+
+    <p>
+    <alert>Section 6.3 in [LB] Runge-Kutta</alert>
+      </p>
+
+    <exercise number="">
+        <title>Question 2.A</title>
+        <statement>
+            <p>Write a Matlab program to implement third order Runge-Kutta with the form: <c>[approx] = rk3(myfun,t0,y0,dt,n)</c> where <c>myfun</c> is an anonymous function for <m>\frac{dy}{dt}=f(t,y)</m>, <c>t0</c> is the initial time value, <c>y0</c> is the initial y value, <c>dt</c> is the step size, and <c>n</c> is the number of steps.</p>
+        </statement>
+        <solution>
+            <p>See sample on D2L with <c>rk3.m</c> in the Matlab module.</p>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 2.B</title>
+        <statement>
+            <p>Write a Matlab program to implement fourth order Runge-Kutta with the form: <c>[approx] = rk4(myfun,t0,y0,dt,n)</c> where <c>myfun</c> is an anonymous function for <m>\frac{dy}{dt}=f(t,y)</m>, <c>t0</c> is the initial time value, <c>y0</c> is the initial y value, <c>dt</c> is the step size, and <c>n</c> is the number of steps.</p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 2.C</title>
+        <statement>
+            <p>For each of the following, calculate the absolute error between third order Runge-Kutta and the analytical answer for <m>T=2</m> with: n=20 steps, n=40 steps, and n=100 steps. Repeat the same calculations using fourth order Runge-Kutta.</p>
+            <ul marker="">
+                <li><p>a) <m>y' = t-\sin(t)</m>; <m>\quad y(0)=3</m></p></li>
+                <li><p>b) <m>y' = t-y</m>; <m>\quad y(0)=4</m></p></li>
+                <li><p>c) <m>y' = e^{-t}-2y</m>; <m>\quad y(0)=5</m></p></li>
+                <li><p>d) <m>y' = 2yt</m>; <m>\quad y(0)=-2</m></p></li>
+                <li><p>e) <m>y' = e^{-t}-y</m>; <m>\quad y(1)=2e</m></p></li>
+            </ul>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 2.D</title>
+        <statement>
+            <p>Describe how the results in Question 2.C reveal the fact that one method is third order and the other is fourth order.</p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 2.E</title>
+        <statement>
+            <p>Use the fourth order Runge-Kutta method to approximate the solution to <m>\frac{dy}{dt}=t-y^2</m> with <m>y(0)=1</m>. Approximate the value at t=2 using a step size of <m>\Delta t=0.1</m> and compare the results with a step size of <m>\Delta t=0.05</m>.</p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 2.F</title>
+        <statement>
+            <p>By hand, calculate one step of third order Runge-Kutta for <m>\frac{dy}{dt} = t+y^2</m> with <m>y(1)=2</m> and <m>\Delta t=0.2</m></p>
+        </statement>
+    </exercise>
+
+    
+            <p>
+                <alert>Section 6.4 of [LB16] -  Adaptive Methods</alert>
+            </p>
+      
+    <exercise number="">
+        <title>Question 4.A</title>
+        <statement>
+            <p>Outline the premise of an adaptive method. Are adaptive methods more accurate than the methods that have fixed step sizes? Please explain your answer.</p>
+        </statement>
+        <solution>
+            <p>Adaptive methods are built for efficiency, any fixed point method can be just as accurate or more accurate with suitably small step sizes.</p>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 4.B</title>
+        <statement>
+            <p>Describe the potential problems when using an adaptive method.</p>
+        </statement>
+        <solution>
+            <p>Adaptive methods can run into problems with singularities just as we observed with adaptive integration. If the true solution has a vertical asymptote then adaptive methods will likely have a problem rendering a solution. For simple problems, the large investment in setting up an adaptive method might not be worth the return on efficiency.</p>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 4.C</title>
+        <statement>
+            <p>A simple adaptive method in Matlab is the <c>ode23</c> algorithm. The format for the <c>ode23</c> program is: <c>[t,y] = ode23(odefun,tspan,y0)</c>, where <c>odefun</c> is the function for the ODE, <c>tspan</c> is a vector that contains the starting and stopping value of t, and <c>y0</c> is the initial y value. Consider one of our favorite examples: <m>\frac{dy}{dt}=t-y</m> with <m>y(0)=4</m> and we are interested in the value at t=2. The code in Matlab to use <c>ode23</c> to approximate a solution to this problem is:</p>
+            <program language="matlab">
+                <input><![CDATA[
+                >> [t,y] = ode23(@(t,y) t-y,[0 2],4);    
+                ]]></input>
+            </program>
+            <p>Please use this information to use Matlab and <c>ode23</c> to solve <m>\frac{dy}{dt}=t-y^2</m> with <m>y(0)=4</m> and we are interested in the value at t=2. Give a plot of your solution.</p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 4.D</title>
+        <statement>
+            <p>Matlab has several solvers for initial value problems with another example being <c>ode45</c>. A person new to the subject might think <c>ode45</c> represents <m>45^{\text{th}}</m> order method, which is definitely not the case. Based on what you know about adaptive methods, please describe what <c>ode45</c> might represent as a numerical solver for initial value problems.</p>
+        </statement>
+        <solution>An adaptive method wtih the label of 45 would translate into predictor method that is fourth order and a corrector method that is fifth order. Of course, adpative methods have evolved to be far more complicated than a simple predictor / corrector construct, but the origins do trace back to the simple predictor / corrector methods. 
+            </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 4.E</title>
+        <statement>
+            <p>Consider the initial value problem of <m>\frac{dy}{dt} = y</m> with <m>y(1) = 4</m>. In this case, the function, <m>f(t,y)</m> is really just a function of <m>y</m>. Does this remove the ability of numerical methods to solve the problem? How does the slope field change with this type of problem?</p>
+        </statement>
+        <solution>
+            <p>The fact that <m>t</m> is not part of <m>f(t,y)</m> is not an obstacle to solving the problem. This type of problem is labeled an autonomous system in differential equations since it does not explicitly depend on <m>t</m>. The slope field for this type of problem has the feature that slopes do not depend on <m>t</m>, which means the slope is not changed as you move horizontally (in the direction of <m>t</m>) in the slope field.</p>
+        </solution>
+    </exercise>
+<p>
+    <alert>Additional Questions on Solving Ordinary Differential Equations</alert>
+            </p>
+
+
+    <exercise number="">
+        <title>Question 5.A</title>
+        <statement>
+            <p>By hand, do one step of Modified Euler's Method to solve: <m>y' = yt+4</m> with <m>y(1)=-1</m> with <m>\Delta t = 0.2</m></p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 5.B</title>
+        <statement>
+            <p>State the existence and uniqueness theorem. How does it apply to numerical methods?</p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 5.C</title>
+        <statement>
+            <p>Give an example of an initial value problem where the existence and uniqueness theorem does not apply.</p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 5.D</title>
+        <statement>
+            <p>Suppose that for an initial value problem the function f(t,y) is not continuous on an open interval that contains the initial value. Does this mean there is not a solution? Please explain your answer.</p>
+        </statement>
+        <solution>
+            <p>The theorem is one way and so if f meets the criteria of the theorem then we are guaranteed there is a unique solution. If the f(t,y) does not meet the criteria then the theorem does not apply and there could be a solution or there might not be a solution (or an infinite number of solutions).</p>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 5.E</title>
+        <statement>
+            <p>Create a Matlab program that will use Euler's Method to solve the differential equation:
+                <me>\frac{dy}{dt} = -20y, \quad y(0)=1,</me>
+                running solutions out to t=2. Please use the step sizes of dt = 0.01, 0.05, and 0.1. Compare these estimates to the exact solution.
+            </p>
+        </statement>
+        <solution>
+            <p>This example illustrates the feature of stability when using a numerical method for solving a differential equation. In this case, approximations behave well with the smallest step size, but approximations have abnormally large errors for the larger step sizes. In some cases, methods have conditional stability where solutions are stable for step sizes that are in a fixed range of values.</p>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 5.F</title>
+        <statement>
+            <p>By hand, do one step of Euler's on the system:</p>
+            <md>
+                <mrow>\frac{dx}{dt} \amp= x + ty; \quad x(0)=-1</mrow>
+                <mrow>\frac{dy}{dt} \amp= x^2 - y; \quad y(0)= 1</mrow>
+            </md>
+            <p>with <m>\Delta t = 0.2</m>.</p>
+        </statement>
+    </exercise>
+
+   
+            <p>
+                <alert>Systems of Differential Equations</alert>
+            </p>
+        
+
+    <exercise number="">
+        <title>Question 6.A</title>
+        <statement>
+            <p>Consider the second order system:</p>
+            <md>
+                <mrow>5\frac{d^2x}{dt^2} \amp= -2xy</mrow>
+                <mrow>20 \frac{d^2y}{dt^2} \amp= x-y</mrow>
+            </md>
+            <p>The initial values for this system are: <m>x(0)=2</m>, <m>\frac{dx}{dt}=3</m>, <m>y(0)= -3</m>, and <m>\frac{dy}{dt}=1</m>. Rewrite this system into a first order system. Consult <c>hw6_1_a.m</c> for how to solve this system from <m>t=0</m> to <m>t=2</m> in Matlab using <c>ode23</c>.</p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 6.B</title>
+        <statement>
+            <p>Consider the second order system:</p>
+            <md>
+                <mrow>\frac{d^2x}{dt^2} \amp= -y\frac{dx}{dt}</mrow>
+                <mrow>\frac{d^2y}{dt^2} \amp= x-\frac{dy}{dt}</mrow>
+            </md>
+            <p>with the initial values: <m>x(0)=2</m>, <m>\frac{dx}{dt}=1</m>, <m>y(0)= -3</m>, and <m>\frac{dy}{dt}=1</m>. Use Matlab <c>ode23</c> to solve this system and give a plot of your solutions for <m>t=0</m> to <m>t=3</m>.</p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 6.C</title>
+        <statement>
+            <p>
+                Recall the mass spring system that you studied in differential equations:
+                <me>mu''+\gamma u' + ku = F(t),</me>
+                where <m>u(t)</m> is the displacement of the mass-spring from the neutral position (positive value is a stretch of the spring and negative is a compression of the spring), m is mass, <m>\gamma</m> is related to the drag coefficient, <m>k</m> is related to the spring constant, and <m>F(t)</m> is a forcing function. Consider the case where <m>m=1/5</m>, <m>\gamma = 0.6</m>, <m>k=20</m>, and <m>F(t) = e^{-(2-t)^2} \cos(0.3t)</m> with the initial conditions of <m>u(0)=3</m> and <m>u'(0)= -2</m>. Use Matlab <c>ode23</c> to approximate the solution from <m>t=0</m> to <m>t=3</m>. Plot the solutions and describe what is physically happening.
+            </p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 6.D</title>
+        <statement>
+            <p>Consider the first order system:</p>
+            <md>
+                <mrow>\frac{dx}{dt} \amp= x+y</mrow>
+                <mrow>\frac{dy}{dt} \amp= xy</mrow>
+            </md>
+            <p>with initial conditions of <m>x(0)=2</m> and <m>y(0)=-2</m>. Write a program in Matlab that will implement Modified Euler with <m>\Delta t = 0.2</m> to approximate the solution to this system from <m>t=0</m> to <m>t=2</m>.</p>
+        </statement>
+        <solution>
+            <p>Check out <c>modified_euler_sys.m</c> on D2L in the Matlab module.</p>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 6.E</title>
+        <statement>
+            <p>Repeat the work for Question 1.D with the step sizes of <m>\Delta t = 0.1</m> and with <m>\Delta t = 0.05</m>. Is this method converging?</p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 6.F</title>
+        <statement>
+            <p>
+                Recall that for equations of one variable we defined absolute error as:
+                <me>\text{Absolute Error}=|y(t_n)-y_n|</me>
+                and we defined absolute relative error as:
+                <me>\text{Absolute Relative Error} = \frac{|y(t_n)-y_n|}{|y(t_n)|},</me>
+                where <m>y(t_n)</m> is the exact answer at <m>t_n</m> and <m>y_n</m> is the approximation corresponding to <m>t_n</m>. All of this theory translates into systems, if we define <m>\vec{w}_n</m> as the approximation to a system problem at the nth step and let <m>\vec{w}(t_n)</m> represent the exact solution at the given time step then explain why the definitions should be:
+                <me>\text{Absolute Error}=\Vert \vec{w}(t_n)-\vec{w}_n\Vert</me>
+                and absolute relative error as:
+                <me>\text{Absolute Relative Error} = \frac{\Vert \vec{w}(t_n)-\vec{w}_n\Vert}{\Vert \vec{w}(t_n)\Vert},</me>
+                and provide the definition of <m>\Vert \vec{x} \Vert</m> for a vector with $n$ entries.
+            </p>
+        </statement>
+        <solution>
+            <p>
+                The answer is rather simple, we swap the use of the absolute value <m>|y|</m> to the use of the vector norm <m>\Vert \vec{w} \Vert</m>. To be clear, the vector norm is the Euclidean length calculation:
+                <me>\Biggr \Vert \begin{pmatrix} a \\ b \\ c \end{pmatrix} \Biggr \Vert = \sqrt{a^2+b^2+c^2}.</me>
+            </p>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 6.G</title>
+        <statement>
+            <p>If we had an approximation to a system problem that is given by
+                <me>\vec{w}_3 = \begin{pmatrix} 1.1 \\ -2.3 \\ 1.46 \end{pmatrix}</me>
+                and the exact answer is given by
+                <me>\vec{w}(t_3) = \begin{pmatrix} 1 \\ -2.5 \\ 1.5 \end{pmatrix}.</me>
+                Consider the following Matlab code:
+            </p>
+            <program language="matlab">
+                <input><![CDATA[
+                >> approx = [1.1; -2.3; 1.46];
+                >> exact = [1; -2.5; 1.5];
+                >> norm(exact - approx)
+                ans = 0.2272  
+                ]]></input>
+            </program>
+            <p>Explain what is being calculated in the Matlab code and how it relates to Question 6.F. Please be as complete as possible and use this information to calculate the absolute relative error.</p>
+        </statement>
+        <solution>
+            <p>The Matlab code of <c>norm(a-b)</c> is the Matlab command that calculates <m>\Vert \vec{a} - \vec{b} \Vert</m> and so the code given above is calculating the absolute error. If there is an interest in calculating the absolute relative error then that can be accomplished via:</p>
+            <program language="matlab">
+                <input><![CDATA[
+                >> approx = [1.1; -2.3; 1.46];
+                >> exact = [1; -2.5; 1.5];
+                >> norm(exact - approx)/norm(exact)
+                ans =    0.0737   
+                ]]></input>
+            </program>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 6.H</title>
+        <statement>
+            <p>Adapt the code for Question 6.D to implement Runge-Kutta 3. Duplicate the same work in 6.D with the same step size, but using RK-3. Please compare the results between Modified Euler and RK-3.</p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 6.I</title>
+        <statement>
+            <p>Consider the first order system:</p>
+            <md>
+                <mrow>\frac{dx}{dt} \amp= x+y^2</mrow>
+                <mrow>\frac{dy}{dt} \amp= xy</mrow>
+            </md>
+            <p>with initial conditions of <m>x(0)=1</m> and <m>y(0)=-1</m>. Use Modified Euler with <m>\Delta t = 0.2</m> to approximate the solution to this system from <m>t=0</m> to <m>t=2</m>. Please validate your solution with <c>ode23</c> and reflect on any specifics regarding your results.</p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 6.J</title>
+        <statement>
+            <p>Consider the first order system:</p>
+            <md>
+                <mrow>\frac{dx}{dt} \amp= t+y^2</mrow>
+                <mrow>\frac{dy}{dt} \amp= x-y</mrow>
+            </md>
+            <p>with initial conditions of <m>x(0)=2</m> and <m>y(0)=-1</m>. Compute two steps of Modified Euler with <m>\Delta t = 0.2</m> to approximate the solution to this system.</p>
+        </statement>
+        <solution>
+            <p>The work can be shown via Matlab below, but can be done via calculator. The important thing is to store as much into calculator memory as possible.</p>
+            <program language="matlab">
+                <input><![CDATA[
+                % Initialize everything
+                >> f = @(t,x,y)[t+y.^2; x-y]; t0 = 0; w0 = [2; -1]; h=0.2;
+                >> m1 = f(t0, w0(1), w0(2))
+                m1 =
+                     1
+                     3
+                ]]></input>
+                
+                <input><![CDATA[
+                >> alpha = w0+h*m1; % update of w for m2
+                >> m2 = f(t0+h,alpha(1),alpha(2))
+                m2 =
+                   0.560000000000000
+                   2.600000000000000
+                ]]></input>
+                <input><![CDATA[
+                >> w1 = w0 + (h/2)*(m1+m2)
+                w1 =
+                   2.156000000000000
+                  -0.440000000000000
+                ]]></input>
+                <input><![CDATA[
+                >> t1 = t0+h;
+                >> m1 = f(t1,w1(1),w1(2))
+                m1 =
+                   0.393600000000000
+                   2.596000000000000
+                ]]></input>
+                <input><![CDATA[
+                >> alpha = w1+h*m1; % update of w for m2
+                >> m2 = f(t1+h,alpha(1),alpha(2))
+                m2 =
+                   0.406272640000000
+                   2.155520000000000
+                ]]></input>
+                <input><![CDATA[
+                >> w2 = w1 + (h/2)*(m1+m2)
+                 w2 =
+                   2.235987264000000
+                   0.035152000000000
+                ]]></input>
+            </program>
+        </solution>
+    </exercise>
+
+    
+</exercises>
+<p>
+    <alert>References</alert>
+</p>
+
+<p>
+    [KK09], <c>Autar Kaw</c> and <c>Eric Kalu</c> <em>Numerical Methods with Applications (2nd ed.)</em>, 2009. Website: <url href="http://autarkaw.com/books/numericalmethods/index.html">book website</url>.
+</p>
+<p>
+    [LB16], <c>Leon Brin</c>, <em>Tea Time Numerical Analysis (Experiences in Mathematics) (2nd ed.)</em>, 2016. Website: <url href="http://lqbrin.github.io/tea-time-numerical/">lqbrin.github.io/tea-time-numerical</url>.
+</p>
+<p>
+    [Matlab], <url href="https://www.mathworks.com">www.mathworks.com</url>, August 2026.
+</p>
+
+
+
+ </section>

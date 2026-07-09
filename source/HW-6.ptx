@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xml:id="Homework-6" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Homework 6</title>
+
+<p>
+    <alert>Summary:</alert>
+    <em>For the homework assignments it is allowed to collaborate with fellow students, tutors, the instructor, and any other resource.</em>
+  </p>
+
+<exercises xml:id="sixth-homework-set">
+ <title>Sixth Homework Set</title>
+
+<p><alert>Boundary Value Problems</alert></p>
+
+
+
+<exercise number="">
+    <title>Question 1.A</title>
+    <statement>WOutline the key components of the shooting method. What changes can be made to help improve the accuracy of a shooting method solver?  </statement>
+    </exercise>
+
+<exercise number=""> <title>Question 1.B</title>
+<statement>Outline the key components of the finite differences method. What changes can be made to help improve the accuracy of the finite differences method? </statement></exercise>
+
+<exercise number="">
+        <title>Question 1.C</title>
+        <statement>
+            <p>Consider the following boundary value problems and identify if the shooting method and/or the finite differences method can be used to solve the given problem. If neither method can be used then please state neither and also explain your answer.</p>
+            <ol>
+                <li><p><m>y'' + y' - 2y = t^2</m>; <m>\quad y(0)=4 \text{ and } y(3)=-1</m> </p></li>
+                <li><p><m>y'' + y' - 2y = t^2</m>; <m>\quad y'(0)=1 \text{ and } y'(3)=-2</m> </p></li>
+                <li><p><m>y'' + y'y = \sin(t)</m>; <m>\quad y(0)=3 \text{ and } y(4)= 1</m></p></li>
+                <li><p><m>y'' + y'y = \sin(t)</m>; <m>\quad y(0)=3 \text{ and } y'(4)= 1</m> </p></li>
+                <li><p><m>y'' + y'y = \sin(t)</m>; <m>\quad y'(0)=3 \text{ and } y'(4)= 1</m> </p></li>
+                <li><p><m>y'' + 2 y' + 6 y = e^t</m>; <m>\quad y(1)=2 \text{ and } y(5)= -1</m> </p></li>
+                <li><p><m>y''' + 2 y'' + 6 y = e^t</m>; <m>\quad y'(0)=2 \text{ and } y(5)= -1</m> </p></li>
+                <li><p><m>y'' + 2 y'y = e^{-t}</m>; <m>\quad y'(0)=2 \text{ and } y'(1)= -1</m> </p></li>
+                <li><p><m>y'' + 2 y'y = e^{-t}</m>; <m>\quad y(0)=2 \text{ and } y(1)= -1</m> </p></li>
+            </ol>
+        </statement>
+        <solution>
+            <ol>
+             <li><p><m>y'' + y' - 2y = t^2</m>; <m>\quad y(0)=4 \text{ and } y(3)=-1</m> <alert>[both]</alert></p></li>
+                <li><p><m>y'' + y' - 2y = t^2</m>; <m>\quad y'(0)=1 \text{ and } y'(3)=-2</m> <alert>[finite differences]</alert></p></li>
+                <li><p><m>y'' + y'y = \sin(t)</m>; <m>\quad y(0)=3 \text{ and } y(4)= 1</m> <alert>[shooting]</alert></p></li>
+                <li><p><m>y'' + y'y = \sin(t)</m>; <m>\quad y(0)=3 \text{ and } y'(4)= 1</m> <alert>[neither (could adapt shooting)]</alert></p></li>
+                <li><p><m>y'' + y'y = \sin(t)</m>; <m>\quad y'(0)=3 \text{ and } y'(4)= 1</m> <alert>[neither]</alert></p></li>
+                <li><p><m>y'' + 2 y' + 6 y = e^t</m>; <m>\quad y(1)=2 \text{ and } y(5)= -1</m> <alert>[both]</alert></p></li>
+                <li><p><m>y''' + 2 y'' + 6 y = e^t</m>; <m>\quad y'(0)=2 \text{ and } y(5)= -1</m> <alert>[neither]</alert></p></li>
+                <li><p><m>y'' + 2 y'y = e^{-t}</m>; <m>\quad y'(0)=2 \text{ and } y'(1)= -1</m> <alert>[neither]</alert></p></li>
+                <li><p><m>y'' + 2 y'y = e^{-t}</m>; <m>\quad y(0)=2 \text{ and } y(1)= -1</m> <alert>[shooting]</alert></p></li>
+                
+</ol>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 1.D</title>
+        <statement>
+            <p>Use finite difference using the centered difference approximation for each derivative for the following BVP:
+                <me>y'' + 2y' + 6y = t^2 + 1, \quad y'(0)=1, \text{ and } y'(2) = 2.</me>
+            </p>
+        </statement>
+        <solution>
+            <me>
+                \begin{pmatrix} 
+                (6h^2-h-1) \amp (1+h) \amp \amp 0 \\ 
+                (1-h) \amp (6h^2-2) \amp (1+h) \amp \\ 
+                \ddots \amp \ddots \amp \ddots \amp \\ 
+                \amp (1-h) \amp (6h^2-2) \amp (1+h) \\ 
+                0 \amp \amp (1-h) \amp (6h^2+h-1) 
+                \end{pmatrix} 
+                \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ \vdots \\ y_{n-2} \\ y_{n-1}\end{pmatrix} 
+                = \begin{pmatrix} h^2 (t_1^2+1)+h(1-h) \\ h^2(t_2^2+1) \\ \vdots \\ \vdots \\ h^2(t_{n-2}^2+1) \\ h^2(t_{n-1}^2+1)-2h(1+h)\end{pmatrix}
+            </me>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 1.E</title>
+        <statement>
+            <p>Use finite difference using the centered difference approximation for the second derivative and the forward difference for the first derivative for the following BVP:
+                <me>y'' - 3y' + 6y = t^2 + 1, \quad y(0)=3, \text{ and } y(1) = 5.</me>
+            </p>
+        </statement>
+        <solution>
+            <me>
+                \begin{pmatrix} 
+                (6h^2+3h-2) \amp (1-3h) \amp \amp 0 \\ 
+                1 \amp (6h^2+3h-2) \amp (1-3h) \amp \\ 
+                \ddots \amp \ddots \amp \ddots \amp \\ 
+                \amp 1 \amp (6h^2+3h-2) \amp (1-3h) \\ 
+                0 \amp \amp 1 \amp (6h^2+3h-2) 
+                \end{pmatrix} 
+                \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ \vdots \\ y_{n-2} \\ y_{n-1}\end{pmatrix} 
+                = \begin{pmatrix} h^2 (t_1^2+1)-3 \\ h^2(t_2^2+1) \\ \vdots \\ \vdots \\ h^2(t_{n-2}^2+1) \\ h^2(t_{n-1}^2+1)-5(1-3h)\end{pmatrix}
+            </me>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 1.F</title>
+        <statement>
+            <p>Use Matlab to solve the problems in 1.D and 1.E using the step sizes of 0.1 and 0.05. Can shooting method be used to solve either 1.D or 1.E?</p>
+        </statement>
+        <solution>
+            <p>We will illustrate using the technique given in the lecture notes. The work to follow is for 1.D using <m>h = 0.1</m>:</p>
+            <program language="matlab">
+                <input><![CDATA[
+                % initialize x
+                >> h = 0.1; x = 0:h:2; x = x'; n = length(x);
+                % This includes endpoints of x=0 and x=2 so the length we want is n-2
+                % First build D
+                >> D = diag((6*h.^2-2)*ones(n-2,1),0);
+                % need to fix the first and last entry due to boundary conditions
+                >> D(1,1) = 6*h.^2-h-1; D(n-2,n-2) = 6*h.^2+h-1;
+                >> Dsup = diag((1+h)*ones(n-3,1),1);
+                >> Dsub = diag((1-h)*ones(n-3,1),-1);
+                >> A = D+Dsup+Dsub;
+                % To start the right hand side we consider h^2 *(x^2+1)
+                >> b = h.^2*(x(2:n-1).^2+1);
+                % The next part is to fix the first and last elements of the right hand side 
+                % to accommodate the boundary conditions. 
+                >> b(1) = b(1) + h*(1-h);
+                >> b(n-2)= b(n-2)-2*h*(1+h);
+                % The linear system is complete and we can solve. 
+                >> y = A\b;
+                % We can plot the solution. 
+                >> plot(x(2:n-1),y)
+                ]]></input>
+            </program>
+            <p>The same work can be repeated for <m>h=0.05</m> and similar work can be done to apply Matlab to solve 1.E. Shooting Method cannot be used on 1.D, but shooting method could be used on 1.E.</p>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 1.G</title>
+        <statement>
+            <p>Formulate the matrix solution to 1.E using centered difference for the second derivative and backward difference for the first derivative.</p>
+        </statement>
+        <solution>
+            <me>
+                \begin{pmatrix} 
+                (6h^2-3h-2) \amp 1 \amp \amp 0 \\ 
+                (1+3h) \amp (6h^2-3h-2) \amp 1 \amp \\ 
+                \ddots \amp \ddots \amp \ddots \amp \\ 
+                \amp (1+3h) \amp (6h^2-3h-2) \amp 1 \\ 
+                0 \amp \amp (1+3h) \amp (6h^2-3h-2) 
+                \end{pmatrix} 
+                \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ \vdots \\ y_{n-2} \\ y_{n-1}\end{pmatrix} 
+                = \begin{pmatrix} h^2 (t_1^2+1)-3(1+3h) \\ h^2(t_2^2+1) \\ \vdots \\ \vdots \\ h^2(t_{n-2}^2+1) \\ h^2(t_{n-1}^2+1)-5\end{pmatrix}
+            </me>
+        </solution>
+    </exercise>
+
+    
+            <p>
+                <alert>Section 2: Linear Systems</alert>
+            </p>
+            <p>You can find reference to solving linear systems in Chapter 4 of [KK09].</p>
+        
+
+    <exercise number="">
+        <title>Question 2.A</title>
+        <statement>
+            <p>Describe the differences between Gaussian Elimination with Back Substitution versus the Gauss-Jordan Method.</p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 2.B</title>
+        <statement>
+            <p>What are the possible outcomes to solving a linear system <m>A\vec{x} = \vec{b}</m>? Please be as complete as possible in your answer.</p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 2.C</title>
+        <statement>
+            <p>Describe all possible solutions using Gaussian Elimination to:</p>
+            <md>
+                <mrow>4y + z \amp= 20</mrow>
+                <mrow>2x - 2y + z \amp= 0</mrow>
+                <mrow>x + z \amp= 5</mrow>
+            </md>
+            <p>(If no solutions exist then please state that outcome.)</p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 2.D</title>
+        <statement>
+            <p>Describe all possible solutions using Gaussian Elimination to:</p>
+            <md>
+                <mrow>2x + z + w \amp= 5</mrow>
+                <mrow>y - w \amp= -1</mrow>
+                <mrow>3x - z - w \amp= 0</mrow>
+                <mrow>4x + y + 2z + w \amp= 9</mrow>
+            </md>
+        </statement>
+        <solution>
+            <p><m>x=1</m>, <m>y=t-1</m>, <m>z=3-t</m>, and <m>w=t</m></p>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 2.E</title>
+        <statement>
+            <p>Describe all possible solutions using Gaussian Elimination to:</p>
+            <md>
+                <mrow>-3x - 3y \amp= 1</mrow>
+                <mrow>x + y \amp= -1</mrow>
+            </md>
+        </statement>
+        <solution>
+            <p>No Solution</p>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 2.F</title>
+        <statement>
+            <p>Describe all possible solutions using Gaussian Elimination to:</p>
+            <md>
+                <mrow>x + z + w \amp= 3</mrow>
+                <mrow>y + w \amp= -1</mrow>
+                <mrow>2x - y +2z + w \amp= 7</mrow>
+                <mrow>x + 2y + z + 3w \amp= 1</mrow>
+            </md>
+        </statement>
+        <solution>
+            <p><m>x=3-t-u</m>, <m>y=-1-t</m>, <m>z=u</m>, and <m>w=t</m></p>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 2.G</title>
+        <statement>
+            <p>Describe all possible solutions using Gaussian Elimination to:</p>
+            <md>
+                <mrow>y - 2w \amp= 1</mrow>
+                <mrow>x + y + z \amp= 4</mrow>
+                <mrow>x + 3y + z - 4w \amp= 6</mrow>
+                <mrow>x + 2y + z - 2w \amp= 3</mrow>
+            </md>
+        </statement>
+        <solution>
+            <p>No Solution</p>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 2.H</title>
+        <statement>
+            <p>Describe all possible solutions using Gaussian Elimination to:</p>
+            <md>
+                <mrow>x + y - 2z \amp= -1</mrow>
+                <mrow>x - y -3z \amp= 0</mrow>
+                <mrow>x - 3y -5 z \amp= 0</mrow>
+            </md>
+            <p>(If no solutions exist then please state that outcome.)</p>
+        </statement>
+        <solution>
+            <p>Solution is <m>x=2</m>, <m>y=-1</m>, and <m>z=1</m></p>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 2.I</title>
+        <statement>
+            <p>Describe all possible solutions using Gaussian Elimination to:</p>
+            <md>
+                <mrow>x + y - 2z \amp= 3</mrow>
+                <mrow>x - y -3z \amp= 1</mrow>
+                <mrow>x - 3y -4 z \amp= -1</mrow>
+            </md>
+            <p>(If no solutions exist then please state that outcome.)</p>
+        </statement>
+        <solution>
+            <p>Solution is <m>x=2 + \frac{5}{2}t</m>, <m>y=1-\frac{t}{2}</m>, and <m>z=t</m></p>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 2.J</title>
+        <statement>
+            <p>Describe all possible solutions using Gaussian Elimination to:</p>
+            <md>
+                <mrow>x + y - 2z \amp= -3</mrow>
+                <mrow>x - y -3z \amp= 1</mrow>
+                <mrow>x - 3y -4 z \amp= 0</mrow>
+            </md>
+            <p>(If no solutions exist then please state that outcome.)</p>
+        </statement>
+        <solution>
+            <p>No Solution</p>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 2.K</title>
+        <statement>
+            <p>Describe all possible solutions using Gaussian Elimination to:</p>
+            <md>
+                <mrow>x + 3z \amp= -2</mrow>
+                <mrow>-5x + 2y - z \amp= 0</mrow>
+                <mrow>3x - y + 6z \amp= -1</mrow>
+            </md>
+            <p>(If no solutions exist then please state that outcome.)</p>
+        </statement>
+        <solution>
+            <p>Solution is <m>x=1</m>, <m>y=2</m>, and <m>z= -1</m></p>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 2.L</title>
+        <statement>
+            <p>Describe all possible solutions using Gaussian Elimination to:</p>
+            <md>
+                <mrow>2x + y \amp= 4</mrow>
+                <mrow>2x + y - z \amp= -1</mrow>
+                <mrow>y + z \amp= 8</mrow>
+            </md>
+            <p>(If no solutions exist then please state that outcome.)</p>
+        </statement>
+        <solution>
+            <p>Solution is <m>x=1/2</m>, <m>y=3</m>, and <m>z= 5</m></p>
+        </solution>
+    </exercise>
+
+            <p>
+                <alert>Section 3: Numerical Techniques for Solving Linear Systems</alert>
+            </p>
+      
+    <exercise number="">
+        <title>Question 3.A</title>
+        <statement>
+            <p>Describe what is meant with Gaussian Elimination with partial pivoting and discuss why partial pivoting would be necessary.</p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 3.B</title>
+        <statement>
+            <p>Define the condition number for a matrix and explain what the implications of a condition number might mean for solving a linear system. Is it desirable to have a small or large condition number?</p>
+        </statement>
+        <solution>
+            <p>The condition number can be estimated by taking the ratio of the magnitude of the largest eigenvalue (largest in magnitude) for a matrix over the magnitude of the smallest eigenvalue (smallest in magnitude) for a matrix. Thus, a singular matrix would have an infinite condition number since a singular matrix has an eigenvalue equal to zero; officially we should say the condition number is not defined for singular matrices. For a nonsingular matrix, the condition number is always positive and it is always greater than, or equal to, one. The smaller the condition number is, the better conditioned it is and the better behaved numerical methods are for solving a well conditioned system. If the condition number is large then it is known as ill-conditioned and these systems can present challenges to numerical solvers.</p>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 3.C</title>
+        <statement>
+            <p>What are the advantages to using the Matlab function of <c>A\b</c> to solve a linear system instead of using <m>A^{-1}b</m>? Please be as complete as possible in your answer. Are there any circumstances where it is more advantageous to use <m>A^{-1}</m>?</p>
+        </statement>
+        <solution>
+            <p>The function of <c>A\b</c> includes computational procedures that make the calculation more stable and more accurate. The use of pivoting would be a simplistic analogy for the kinds of things <c>A\b</c> does to help make the solution more stable and more accurate. In addition, <c>A\b</c> includes elements to speed up the calculations since calculating the full inverse of a matrix is very expensive to accomplish computationally.</p>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 3.D</title>
+        <statement>
+            <p>Use three iterations of Gauss-Seidel with initial guess of <c>[1; 2; 3]</c> for the system:</p>
+            <md>
+                <mrow>12x + 7y + 3z \amp= 17</mrow>
+                <mrow>3x + 6y + 2z \amp= 9</mrow>
+                <mrow>2x + 7y - 11z \amp= 49</mrow>
+            </md>
+            <p>Use Matlab to solve this system and compute the absolute relative error between the Gauss-Seidel approximation and the exact solution.</p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 3.E</title>
+        <statement>
+            <p>Give the definition of a singular linear system and a nonsingular system. Please describe how one can identify if a system is singular or nonsingular.</p>
+        </statement>
+    </exercise>
+
+            <p>
+                <alert>Section 4: Eigenvalues and Eigenvectors</alert>
+            </p>
+      
+    <exercise number="">
+        <title>Question 4.A</title>
+        <statement>
+            <p>Find the eigenvalues and eigenvectors for each of the following:
+                <me>
+                    A = \begin{pmatrix} -3 \amp 15 \\ 3 \amp 9\end{pmatrix}, \quad 
+                    B = \begin{pmatrix} -3 \amp 0 \\ 5 \amp 1\end{pmatrix}, \text{ and } 
+                    C = \begin{pmatrix} -2 \amp 6 \\ -9 \amp 13\end{pmatrix}.
+                </me>
+            </p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 4.B</title>
+        <statement>
+            <p>Is it possible for a matrix to have a zero for an eigenvalue? What does it mean if zero is an eigenvalue for a matrix?</p>
+        </statement>
+        <solution>
+            <p>It is possible for a matrix to have an eigenvalue that is zero and when this happens it forces the matrix to be singular.</p>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 4.C</title>
+        <statement>
+            <p>Outline the process of the Power Method and what structural feature of a matrix will promote fast convergence when using the Power Method.</p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 4.D</title>
+        <statement>
+            <p>Write a Matlab program that implements the Power Method given a matrix A, an initial vector v, and a number iterations to run the method, n.</p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 4.E</title>
+        <statement>
+            <p>Describe a method to design an automatic stopping condition for the Power Method based on convergence.</p>
+        </statement>
+        <solution>
+            <p>Recall that the coefficients of <m>c_k</m> in the method converge to the largest eigenvalue in absolute value. Thus, a stopping condition of <m>|c_{k-1} - c_k| \lt \text{tol}</m> is a way to stop the algorithm based on convergence.</p>
+        </solution>
+    </exercise>
+
+  <p>
+                <alert>Section 5: Extra Questions</alert>
+     </p>   
+
+    <exercise number="">
+        <title>Question 5.A</title>
+        <statement>
+            <p>State the definition of local truncation error for solving a differential system:
+                <me>\frac{d\vec{w}}{dt} = \vec{F}(t,\vec{w}), \quad \vec{w}(0)=\vec{w}_0.</me>
+            </p>
+        </statement>
+        <solution>
+            <me>\text{LTE}=\frac{\Vert \vec{w}(t_1)-\vec{w}_1 \Vert}{\Delta t}</me>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 5.B</title>
+        <statement>
+            <p>State the definition for order of convergence for a numerical method solving a system. In this case, the output of the method involves vectors, <m>\vec{w}_k</m> converging to a solution <m>\vec{w}</m>, i.e., <m>\vec{w}_k \rightarrow \vec{w}</m> as <m>k\rightarrow \infty</m>.</p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 5.C</title>
+        <statement>
+            <p>Explain the link between finding eigenvalues and the root finding methods that were covered early in the course.</p>
+        </statement>
+        <solution>
+            <p>The explanation is really in the definition. Eigenvalues are roots to the characteristic equation, i.e. eigenvalues are solutions to the equation <m>\det(A - \lambda I) = 0</m>.</p>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 5.D</title>
+        <statement>
+            <p>Use Matlab to compute the condition number for the system:</p>
+            <md>
+                <mrow>x + y + z \amp= 2</mrow>
+                <mrow>x + 2z \amp= 1</mrow>
+                <mrow>2x + y + 3.0001z \amp= 3.0001</mrow>
+            </md>
+            <p>Interpret what the condition number might mean for solving this system.</p>
+        </statement>
+        <solution>
+            <p> In MATLAB we have </p>
+            <program>
+                <input>
+            >> A = [1 1 1;1 0 2; 2 1 3.001];
+            >> cond(A)
+            ans =1.9516e+04
+</input> </program> 
+<p> There isn't a clear line for when a condition number is too large. Notice that if we replace the 3.001 entry with 3 then the matrix becomes singular so this matrix is near singular and could be challenging to solve due to the large condition number. </p>
+        </solution>
+    </exercise>
+
+
+ </exercises>
+
+ <p>
+    <alert>References</alert>
+</p>
+
+<p>
+    [KK09], <c>Autar Kaw</c> and <c>Eric Kalu</c> <em>Numerical Methods with Applications (2nd ed.)</em>, 2009. Website: <url href="http://autarkaw.com/books/numericalmethods/index.html">book website</url>.
+</p>
+<p>
+    [LB16], <c>Leon Brin</c>, <em>Tea Time Numerical Analysis (Experiences in Mathematics) (2nd ed.)</em>, 2016. Website: <url href="http://lqbrin.github.io/tea-time-numerical/">lqbrin.github.io/tea-time-numerical</url>.
+</p>
+<p>
+    [Matlab], <url href="https://www.mathworks.com">www.mathworks.com</url>, August 2026.
+</p>
+
+
+ </section>

@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xml:id="Homework-4" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Homework 4</title>
+
+<exercises xml:id="fourth-homework-set">
+ <title>Fourth Homework Set</title>
+    
+  <p>
+           <alert>Interpolation</alert>
+        </p>
+    <exercise number="">
+    <statement>
+        <p>
+            Problems from [LB16] (use Newton's Divided Difference for each of the following) in Section 3.3: 3,4,5,and 6   
+        </p> </statement>
+
+        <solution>
+            <p>
+        Problem 3: the polynomial is: <m>P(x) = 0.12 + 0.2(x-0.1) - 1.5(x-0.1)(x-0.2) + 10(x-0.1)(x-0.2)(x-0.3)</m> for part b) if you add the data point (0.5,0.11) then the next term in the polynomial is: <md>-6.25(x-0.1)(x-0.2)(x-0.3)(x-0.4)</md> </p> 
+<p> Problem 4: The polynomial is: <md> P(x) = 2 + 0(x-1)-1(x-1)(x-2)+\frac 23(x-1)(x-2)(x-3)</md> </p>
+<p> Problem 5: The polynomial is: 
+    <md> P(x) = 10 + 1.6(x-10)-0.0016(x-10(x-30)</md>
+    </p>
+<p> Problem 6: The polynomial is: 
+<md> P(x)=0.987-0.925(x-1) + 0.8094 (x-1)(x-2.2)</md></p>
+        </solution>
+    </exercise>
+  
+
+    <exercise number=" ">
+        <title>Question 1.A</title>  
+<statement> 
+<p>Consider the table given in [KK09] for Chapter 5 Civil Engineering application table that  tracks temperature against depth:</p>
+   
+        <tabular top="major" bottom="major" left="minor" right="minor">
+            <row bottom="minor">
+                <cell halign="left">Temperature</cell>
+                <cell halign="center">Depth</cell>
+            </row>
+            <row bottom="major">
+                <cell halign="left">Celsius</cell>
+                <cell halign="center">meters</cell>
+            </row>
+            <row bottom="minor"><cell halign="left">19.1</cell><cell halign="center">0</cell></row>
+            <row bottom="minor"><cell halign="left">19.1</cell><cell halign="center">-1</cell></row>
+            <row bottom="minor"><cell halign="left">19</cell><cell halign="center">-2</cell></row>
+            <row bottom="minor"><cell halign="left">18.8</cell><cell halign="center">-3</cell></row>
+            <row bottom="minor"><cell halign="left">18.7</cell><cell halign="center">-4</cell></row>
+            <row bottom="minor"><cell halign="left">18.3</cell><cell halign="center">-5</cell></row>
+            <row bottom="minor"><cell halign="left">18.2</cell><cell halign="center">-6</cell></row>
+            <row bottom="minor"><cell halign="left">17.6</cell><cell halign="center">-7</cell></row>
+            <row bottom="minor"><cell halign="left">11.7</cell><cell halign="center">-8</cell></row>
+            <row bottom="minor"><cell halign="left">9.9</cell><cell halign="center">-9</cell></row>
+            <row bottom="minor"><cell halign="left">9.1</cell><cell halign="center">-10</cell></row>
+        </tabular>
+       
+
+
+    <task>
+        <statement>
+            <p>Use the highest degree Newton's Divided Difference Polynomial to approximate the temperature when depth is -7.5 meters.</p>
+        </statement>
+        <solution>
+            <p>Used Matlab to produce 15.3913</p>
+        </solution>
+    </task>
+
+    <task>
+        <statement>
+            <p>Use <c>directpoly.m</c> to interpolate the temperature at -7.5 meters.</p>
+        </statement>
+        <solution>
+            <p>Used Matlab to produce 15.3913</p>
+        </solution>
+    </task>
+
+    <task>
+        <statement>
+            <p>Use Matlab's <c>spline</c> function to interpolate the temperature at -7.5 meters.</p>
+        </statement>
+        <solution>
+            <p>Used Matlab to produce 14.7757</p>
+        </solution>
+    </task>
+
+    <task>
+        <statement>
+            <p>Use Matlab to plot the interpolation function versus the data for each of the methods above (Newton's Polynomial, directpoly, and spline).</p>
+        </statement>
+    </task>
+
+    <task>
+        <statement>
+            <p>Which approximation would you pick as most accurate and justify your answer.</p>
+        </statement>
+        <solution>
+            <p>Plots reveal that splines have less oscillations and artifacts compared to the other methods.</p>
+        </solution>
+    </task>
+
+
+    </statement>
+    </exercise>
+
+
+    <exercise number=" ">
+        <title>Question 1.B</title>
+       <statement><p>
+            The program: directpoly.m is an implementation of the direct method of interpolation that involved finding the coefficients of a polynomial directly. What advantages does this method have over linear interpolation? What advantages does linear interpolation have over the direct method? Please fully explain your answer.</p> 
+            </statement> 
+       <solution> <p>Polynomial interpolation is smooth (infinite number of derivatives), nonlinear can fit nonlinear data better.</p></solution>
+    </exercise>
+    -->
+
+    <exercise number=" ">
+        <title>Question 1.C</title>
+        <statement>
+            <p> Cubic splines is a very popular method for interpolation. Identify the features that makes cubic splines so popular. Are there any conditions where cubic spline should not be used? Are there any conditions where linear interpolation should be selected over cubic splines? </p>
+        </statement>
+        <solution>
+            <p> Cubic splines are smooth and low order, the only cases where cubic splines are not appropriate is when the data is base on linear, quadratic, or other functions that cannot be fit to a cubic spline. </p>
+        </solution>
+    </exercise>
+
+<exercise number=" ">
+        <title>Question 1.D</title>
+        <statement>
+            <p> We have discussed the importance with some methods regarding equal spacing of the data. Does any of the methods we have covered (linear interpolation, direct interpolation, Newton Divided Difference, and cubic splines) require even spacing in the data?</p>
+        </statement>
+        <solution>
+            <p>All do allow for unequal spacing.</p>
+        </solution>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 1.E</title>
+        <statement>
+            <p>Are there any concerns with any of the methods if the data has unequal spacing?</p>
+        </statement>
+        <solution>
+            <p>Unequal spacing can influence the presence of artifacts and other undesirable features. Accuracy is higher if the data is close and uniformly spaced.</p>
+        </solution>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 1.F</title>
+        <statement>
+            <p>Review the conditions used to derive the cubic spline method. For a data set of 21 points, how many unknown variables are involved and how many equations are used to build the large linear system used for cubic splines?</p>
+        </statement>
+        <solution>
+            <p>21 points translate into 20 splines and 80 unknowns: 40 equations for splines to match each data point (2 for each spline), 19 equations for matching splines for the first derivative, 19 equations for matching splines for the second derivative, plus two boundary conditions.</p>
+        </solution>
+    </exercise>
+
+<p>
+    <alert>Numerical Differentiation </alert>
+</p>
+
+    <exercise number=" ">
+        <title>Question 2.A</title>
+        <statement>
+            <p>Prove that the backward difference approximation is first order.</p>
+        </statement>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 2.B</title>
+        <statement>
+            <p>Consider the function <m>f(x) = e^x + \sin(x)</m></p>
+            <ul marker="disc">
+                <li><p>Use forward difference to approximate <m>f'(-2)</m> using <m>\Delta x = 0.2, 0.1, 0.05, \text{ and } 0.025</m>. In addition, calculate the absolute error for each step size.</p></li>
+                <li><p>Use centered difference to approximate <m>f'(-2)</m> using <m>\Delta x = 0.2, 0.1, 0.05, \text{ and } 0.025</m>. In addition, calculate the absolute error for each step size.</p></li>
+                <li><p>Compare the results from the two methods and review how order of convergence is reflected in your results.</p></li>
+            </ul>
+        </statement>
+        <solution>
+            <p>From Matlab the error for forward (first column) versus centered difference (second column):</p>
+            <console>
+                <output><![CDATA[
+                0.1079    0.0037
+                0.0531    0.0009    
+                0.0263    0.0002    
+                0.0131    0.0001    
+                ]]></output>
+            </console>
+        </solution>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 2.C</title>
+        <statement>
+            <p>Consider the function <m>f(x) = e^x + \sin(x)</m> and use centered difference to approximate <m>f''(-2)</m> using <m>\Delta x = 0.2, 0.1, 0.05, \text{ and } 0.025</m>. In addition, calculate the absolute error for each step size.</p>
+        </statement>
+        <solution>
+            <p>From Matlab the centered difference error is:</p>
+            <console>
+                <output><![CDATA[
+                0.002575233455464
+                0.000644678315616
+                0.000161223977853
+                0.000040309394840
+                ]]></output>
+            </console>
+        </solution>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 2.D</title>
+        <statement>
+            <p>Consider the data from Question 1.A. Suppose we take a portion of the cubic spline interpolation from Matlab to approximate the derivative when the depth is -7 meters. This can be accomplished by the following:</p>
+            <program language="matlab">
+                <input><![CDATA[
+                >> x=[-5; -6; -7; -8; -9];
+                >> y=[18.3; 18.2; 17.6; 11.7; 9.9];
+                >> pp = spline(x,y);
+                ]]></input>
+            </program>
+            <p>This stores all the information in a struct in Matlab. If you just want the coefficients then that can be accessed via</p>
+            <program language="matlab">
+                <input><![CDATA[
+                >> [~, coeffs] = unmkpp(pp);
+                ]]></input>
+            </program>
+            <p>In Matlab, if you type coeffs then the coeffs array list the coefficients for each spline in decreasing order. Thus, the coefficients we are interested in are in the third row of the array with the first element of the third row being the coefficient for <m>(x-(-7))^3</m>, the second element being the coefficient for <m>(x-(-7))^2</m>, the third element being the coefficient for <m>(x-(-7))</m>, and the last entry should be 17.6 to match the data entry for -7. Use the information from the Matlab spline function to use the spline to estimate the derivative at a depth of -7.</p>
+        </statement>
+        <solution>
+            <p>The coeffs array is given by</p>
+            <console>
+                <output><![CDATA[
+                -2.1583    8.5250   -4.5667    9.9000
+                -2.1583    2.0500    6.0083   11.7000
+                 1.3917   -4.4250    3.6333   17.6000
+                 1.3917   -0.2500   -1.0417   18.2000
+                ]]></output>
+            </console>
+            <p>which means the derivative at a depth of -7 is the linear coefficient, 3.6333.</p>
+        </solution>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 2.E</title>
+        <statement>
+            <p>Would the answer in Question 2.D change if you added more data points? Please be complete in your answer.</p>
+        </statement>
+        <solution>
+            <p>The answer would change slightly since all the data points are in the linear system for cubic splines.</p>
+        </solution>
+    </exercise>
+
+    <exercise number=" ">
+        <title>Question 2.F</title>
+        <statement>
+            <p>Recall that the centered difference method (<m>f'(x) \approx \frac{f(x+\Delta x) - f(x-\Delta x)}{2\Delta x}</m>) is second order while forward difference is first order.</p>
+            <ul marker="disc">
+                <li><p>What is the mathematical definition of a first order method in this context and compare this to the definition of second order.</p></li>
+                <li><p>What is the advantage of using a second order method? Please explain as completely as possible and illustrate with an example.</p></li>
+                <li><p>What is the advantage of using a first order method?</p></li>
+                <li><p>Is it possible to use higher order methods? How can a third or fourth order method be generated? (You can be general in your description of how a higher order method can be generated).</p></li>
+            </ul>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 2.G</title>
+        <statement>
+            <p>Take the data in Question 1.A and use the information to approximate the second derivative at a depth of -7 meters. What does the second derivative represent in this example?</p>
+        </statement>
+        <solution>
+            <p>Centered Difference approximation of the second derivative results in -5.3. This represents the temperature change per meter squared. The analogy would be the <q>acceleration</q> of temperature change relative to change in depth.</p>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 2.H</title>
+        <statement>
+            <p>Let x and y be vectors that contain the x values and the f(x) values for a function respectively. We will assume the values in x are strictly increasing. Develop the MATLAB code to calculate the forward difference for this data set and compare this with the MATLAB code to calculate the backward difference.</p>
+        </statement>
+        <solution>
+            <p>There is only a slight difference between these two calculations. The command central to our work is the <c>diff</c> command. <c>diff(x)</c> results in <c>[x(2)-x(1), x(3)-x(2), ...., x(n)-x(n-1)]</c>. Notice this vector has one less entry than the original vector x. The difference quotient we are looking for is <c>dY = diff(y)./diff(x)</c>. The key detail is the forward difference is comprised of <c>x(1:n-1)</c> and <c>dY</c>, while the backward difference is comprised by <c>x(2:n)</c> and <c>dY</c>. The difference quotient <c>dY</c> is the forward difference calculation for the left endpoint, but it is the backward difference estimate for the right endpoint.</p>
+        </solution>
+    </exercise>
+
+    <p>
+        <alert>Numerical Integration</alert></p>
+        <exercise number="">
+           <statement> <p>
+                Problems from Section 4.4 in [LB16]: 1 a) b) c) d), 2 a) b) c) d), 13
+            </p></statement>
+    
+        <solution>
+            <p><em>problem 1 (Midpoint approach / Left Hand variants):</em></p>
+            <p>a) <m>\int_1^3 \ln(\sin(x))\, dx</m></p>
+            <console>
+                <input><![CDATA[f=@(x) log(sin(x)); --> (2/3)*(f(4/3)+f(2)+f(8/3))]]></input>
+                <output><![CDATA[ans = -0.604014605941021]]></output>
+            </console>
+            <p>b) <m>\int_5^7 \sqrt{x\cos(x)}\, dx</m></p>
+            <console>
+                <input><![CDATA[f=@(x) sqrt(x.*cos(x)); -->(2/3)*(f(16/3)+f(6)+f(20/3))]]></input>
+                <output><![CDATA[ans = 4.432124134305341]]></output>
+            </console>
+            <p>c) <m>\int_1^4 \frac{e^x \ln(x)}{x}\, dx</m></p>
+            <console>
+                <input><![CDATA[f=@(x) (exp(x).*log(x))./x;--> (f(3/2)+f(5/2)+f(7/2))]]></input>
+                <output><![CDATA[ans = 17.529617332483518]]></output>
+            </console>
+            <p>d) <m>\int_{10}^{13} \sqrt{1+\cos^2(x)}\, dx</m></p>
+            <console>
+                <input><![CDATA[f=@(x) sqrt(1+(cos(x).^2));--->f(10.5)+f(11.5)+f(12.5)]]></input>
+                <output><![CDATA[ans = 3.63063557627380]]></output>
+            </console>
+
+            <p><em>problem 1 (Trapezoidal variants):</em></p>
+            <p>a) <m>\int_1^3 \ln(\sin(x))\, dx</m></p>
+            <console>
+                <input><![CDATA[f=@(x) log(sin(x)); -->(1/3)*(f(1)+2*f(5/3)+2*f(7/3)+f(3))]]></input>
+                <output><![CDATA[ans = -0.929469389751241]]></output>
+            </console>
+            <p>b) <m>\int_5^7 \sqrt{x\cos(x)}\, dx</m></p>
+            <console>
+                <input><![CDATA[f=@(x) sqrt(x.*cos(x)); --> (1/3)*(f(5)+2*f(17/3)+2*f(19/3)+f(7))]]></input>
+                <output><![CDATA[ans = 4.272884027016091]]></output>
+            </console>
+            <p>c) <m>\int_1^4 \frac{e^x \ln(x)}{x}\, dx</m></p>
+            <console>
+                <input><![CDATA[f=@(x) (exp(x).*log(x))./x;-->.5*(f(1)+2*f(2)+2*f(3)+f(4))]]></input>
+                <output><![CDATA[ans = 19.377396036905900]]></output>
+            </console>
+            <p>d) <m>\int_{10}^{13} \sqrt{1+\cos^2(x)}\, dx</m></p>
+            <console>
+                <input><![CDATA[f=@(x) sqrt(1+(cos(x).^2));--->0.5*(f(10)+2*f(11)+2*f(12)+f(13))]]></input>
+                <output><![CDATA[ans = 3.636350478753207]]></output>
+            </console>
+        </solution> </exercise>
+
+<exercise number="">
+        <title>Question 4.A</title>
+        <statement>
+            <p>Use 3 subintervals along with Left Hand and Right Hand Rule to estimate the integrals in question 1 in [LB16] parts a) b) c) and d).</p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 4.B</title>
+        <statement>
+            <p>Use 2 subintervals and Simpson's 1/3 Rule to estimate the integrals in question 1 in [LB16] parts a) b) c) and d).</p>
+        </statement>
+        <solution>
+            <p><em>problem 1:</em></p>
+            <p>a) <m>\int_1^3 \ln(\sin(x))\, dx</m></p>
+            <console>
+                <input><![CDATA[f=@(x) log(sin(x)); -->(1/3)*(f(1)+4*f(2)+f(3))]]></input>
+                <output><![CDATA[ans = -0.837026840086607]]></output>
+            </console>
+            <p>b) <m>\int_5^7 \sqrt{x\cos(x)}\, dx</m></p>
+            <console>
+                <input><![CDATA[f=@(x) sqrt(x.*cos(x)); --> (1/3)*(f(5)+4*f(6)+f(7))]]></input>
+                <output><![CDATA[ans = 4.363006966763448]]></output>
+            </console>
+            <p>c) <m>\int_1^4 \frac{e^x \ln(x)}{x}\, dx</m></p>
+            <console>
+                <input><![CDATA[f=@(x) (exp(x).*log(x))./x;-->0.5*(f(1)+4*f(2.5)+f(4))]]></input>
+                <output><![CDATA[ans = 18.391303485660067]]></output>
+            </console>
+            <p>d) <m>\int_{10}^{13} \sqrt{1+\cos^2(x)}\, dx</m></p>
+            <console>
+                <input><![CDATA[f=@(x) sqrt(1+(cos(x).^2));--->0.5*(f(10)+2*f(11.5)+f(13))]]></input>
+                <output><![CDATA[ans = 3.549208379834219]]></output>
+            </console>
+        </solution>
+    </exercise>
+
+     <exercise number="">
+        <title>Question 4.C</title>
+        <statement>
+            <p>Use 3 subintervals and Simpson's 3/8 Rule to estimate the integrals in question 1 in [LB16] parts a) b) c) and d).</p>
+        </statement>
+        <solution>
+            <p><em>problem 1:</em></p>
+            <p>a) <m>\int_1^3 \ln(\sin(x))\, dx</m></p>
+            <console>
+                <input><![CDATA[f=@(x) log(sin(x)); -->(1/4)*(f(1)+3*f(5/3)+3*f(7/3)+f(3))]]></input>
+                <output><![CDATA[ans = -0.779309516485249]]></output>
+            </console>
+            <p>b) <m>\int_5^7 \sqrt{x\cos(x)}\, dx</m></p>
+            <console>
+                <input><![CDATA[f=@(x) sqrt(x.*cos(x)); --> (1/4)*(f(5)+3*f(17/3)+3*f(19/3)+f(7))]]></input>
+                <output><![CDATA[ans = 4.370973342294054]]></output>
+            </console>
+            <p>c) <m>\int_1^4 \frac{e^x \ln(x)}{x}\, dx</m></p>
+            <console>
+                <input><![CDATA[f=@(x) (exp(x).*log(x))./x;--> (3/8)*(f(1)+3*f(2)+3*f(3)+f(4))]]></input>
+                <output><![CDATA[ans = 18.251643626588251]]></output>
+            </console>
+            <p>d) <m>\int_{10}^{13} \sqrt{1+\cos^2(x)}\, dx</m></p>
+            <console>
+                <input><![CDATA[f=@(x) sqrt(1+(cos(x).^2));---> (3/8)*(f(10)+3*f(11)+3*f(12)+f(13))]]></input>
+                <output><![CDATA[ans = 3.592942174388922]]></output>
+            </console>
+        </solution>
+    </exercise>
+
+<exercise number="">
+        <title>Question 4.D</title>
+        <statement>
+            <p>In general, all the fixed point integration methods to approximate the integral: <m>\int_a^b f(x) \, dx</m>, the interval is divided into n subintervals by letting <m>\Delta x = \frac{b-a}{n}</m>. The first node is <m>x_0 = a</m> and every node is defined by <m>x_k = a + k\Delta x</m> for <m>k=0..n</m>. For composite Simpson's 1/3 rule it is required that <m>n</m> is an even number in order for the number of subintervals to match what is needed for The Simpson's 1/3 Rule.</p>
+            <ul marker="disc">
+                <li><p>Devise the rule for <m>n</m> that is required for composite Simpson's 3/8 Rule to work.</p></li>
+            </ul>
+        </statement>
+        <solution>
+            <p>The rule is n is a multiple of 3.</p>
+        </solution>
+    </exercise>
+
+
+ <exercise number="">
+        <title>Question 4.E</title>
+        <statement>
+            <p>Consider the integral: <m>\int_0^1 e^x \, dx</m>. For each of the following methods calculate the approximation and the absolute errors for the following step sizes: <m>\Delta x = 0.25, 0.125, \text{ and } 0.1</m>.</p>
+        </statement>
+        <solution>
+            <p>Tracking error:</p>
+            <ul marker="disc">
+                <li><p>Right Hand Rule: <m>\Delta x = 0.25 \rightarrow 0.223725304655852</m>, <m>\Delta x = 0.125 \rightarrow 0.109629377983947</m>, and <m>\Delta x = 0.1 \rightarrow 0.087345754353221</m></p></li>
+                <li><p>Trapezoidal Rule: <m>\Delta x= 0.25 \rightarrow 0.008940076098471</m>, <m>\Delta x= 0.125 \rightarrow 0.002236763705256</m>, and <m>\Delta x = 0.1 \rightarrow 0.001431662930269</m></p></li>
+                <li><p>Simpson's 1/3 Rule: <m>\Delta x = 0.25 \rightarrow 3.701346270146288\times 10^{-5}</m>, <m>\Delta x = 0.125 \rightarrow 2.326240851502348\times 10^{-6}</m>, and <m>\Delta x = 0.1 \rightarrow 9.534657778864641\times 10^{-7}</m></p></li>
+            </ul>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 4.F</title>
+        <statement>
+            <p>Review the convergence patterns given in Question 4.E. Describe how the convergence patters in Question 4.E reveal that Right Hand Rule is first order, Trapezoidal is second order, and Simpson's 1/3 rule is fourth order.</p>
+        </statement>
+    </exercise>
+
+<alert>Additional questions</alert>
+
+    <exercise number="">
+        <title>Question 5</title>
+        <statement>
+            <p>Outline what happens with an adaptive integration method and describe the primary advantage of an adaptive method.</p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 6</title>
+        <statement>
+            <p>Recall the example in class (that comes from [KK09]), which is a table of velocity values for a rocket:</p>
+            <tabular top="major" bottom="major" left="minor" right="minor">
+                <row bottom="minor"><cell halign="left">time</cell><cell halign="center">velocity</cell></row>
+                <row bottom="major"><cell halign="left">secs</cell><cell halign="center">m/s</cell></row>
+                <row bottom="minor"><cell halign="left">0</cell><cell halign="center">0</cell></row>
+                <row bottom="minor"><cell halign="left">10</cell><cell halign="center">227.04</cell></row>
+                <row bottom="minor"><cell halign="left">15</cell><cell halign="center">362.78</cell></row>
+                <row bottom="minor"><cell halign="left">20</cell><cell halign="center">517.35</cell></row>
+                <row bottom="minor"><cell halign="left">22.5</cell><cell halign="center">602.97</cell></row>
+                <row bottom="minor"><cell halign="left">30</cell><cell halign="center">901.67</cell></row>
+            </tabular>
+            <p>Estimate the total distance traveled by the rocket based on this data. Please discuss how accurate your estimate may be.</p>
+        </statement>
+        <solution>
+            <p>Using trapezoidal results in approximately 11,852.9 meters. Trapezoidal is second order so this should be more accurate than simple left or right, we cannot use the Simpson's methods since the step size is not uniform. Using Matlab to deploy adaptive integration using the cubic spline results in 11,749.96 meters, which should be more accurate.</p>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 7</title>
+        <statement>
+            <p>In Matlab, one of the adaptive quadrature methods is the quad function. To use quad to estimate <m>\int_0^1 \frac{dx}{\sqrt{1+x^4}}</m>. The Matlab code is:</p>
+            <program language="matlab">
+                <input><![CDATA[
+                >> f = @(x) 1./sqrt(1+x.^4);
+                >> quad(f,0,1)
+                ]]></input>
+            </program>
+            <ul marker="disc">
+                <li><p>What is the estimate that Matlab quad gives for <m>\int_0^1 \frac{dx}{\sqrt{1+x^4}}</m>?</p></li>
+                <li><p>Should this integral exist?</p></li>
+                <li><p>How do we know if this estimate is accurate?</p></li>
+            </ul>
+            <p>It should be noted that quad is a rather old command in Matlab and if you consult the contemporary versions of Matlab then the integral command will likely be the command they will push. The integral command has the syntax:</p>
+            <program language="matlab">
+                <input><![CDATA[
+                >> f = @(x) 1./sqrt(1+x.^4);
+                >> integral(f,0,1)
+                ]]></input>
+            </program>
+            <p>One advantage to the use of the integral command is the ability to handle improper integrals</p>
+            <program language="matlab">
+                <input><![CDATA[
+                >> f = @(x) 1./sqrt(1+x.^4);
+                >> integral(f,0,Inf)
+                ]]></input>
+            </program>
+            <p>The quad command often struggles with this kind of problem.</p>
+        </statement>
+        <solution>
+            <program language="matlab">
+                <input><![CDATA[
+                >> f = @(x) 1./sqrt(1+x.^4);
+                >> integral(f,0,Inf)
+                ]]></input>
+                <output><![CDATA[
+                ans =    1.8541    
+                ]]></output>
+            </program>
+            <p>Thus,</p>
+            <me>\int_0^{\infty} \frac{dx}{\sqrt{1+x^4}} \approx 1.8541</me>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 8</title>
+        <statement>
+            <p>Use MATLAB to program a composite Simpson's 1/3 method and use this program to approximate <m>\int_0^1 \frac{dx}{\sqrt{1+x^4}}</m>.</p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 9</title>
+        <statement>
+            <p>Use MATLAB to program a trapezoidal rule where the spacing is not uniform between all the x values. Let the input be vectors x and y that are the x values and y are the corresponding functional values. Please assume x is strictly increasing.</p>
+        </statement>
+        <solution>
+            <p>Here is an example.</p>
+            <program language="matlab">
+                <input><![CDATA[
+                function [flag, I] = trapgen(x, y)
+                % [flag, I] = trapgen(x, y)
+                % Numerically integrates using the trapezoidal rule
+                %         for unequally spaced x-values (assume x is strictly increasing)
+                %
+                %   Inputs:
+                %     x - vector of x-values (not necessarily equally spaced)
+                %     y - vector of corresponding y-values
+                %
+                %   Output:
+                %     I - approximate value of the integral
+                %     flag = 0 --> output is fine
+                %     flag = 1 -->  x and y are not the same length
+                %     flag = 2 -->  x does not have at least two points
+                I = 0; 
+
+                    % Input check
+                    if length(x) ~= length(y)
+                        flag = 1;
+                    elseif length(x) < 2
+                        flag = 2; 
+                    end % end if
+
+                    % Loop through each subinterval
+                    for i = 1:length(x)-1
+                        h = x(i+1) - x(i);
+                        I = I + 0.5 * h * (y(i) + y(i+1));
+                    end %end for
+                end %end function
+                ]]></input>
+            </program>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 10</title>
+        <statement>
+            <p>Consider the integral <m>\int_0^1 \frac{\sin(x)}{x} \, dx</m>. Use Matlab to estimate the value of this integral. Should this integral have a finite value? (Notice the function is not defined when x=0.)</p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 11</title>
+        <statement>
+            <p>Table 1 in Chapter 7, Section 5 of [KK09] gives a few points and weights for Gaussian Quadrature. Consider the integral <m>\int_{-1}^1 (e^x + e^{-x}) \, dx</m></p>
+            <ul marker="disc">
+                <li><p>Use Gaussian Quadrature 2, 3, and 4 point methods to approximate <m>\int_{-1}^1 (e^x + e^{-x}) \, dx</m> and find the absolute error for each approximation.</p></li>
+                <li><p>Use Trapezoidal Rule with step sizes of: <m>\Delta x = 0.5, 0.25, \text{ and } 0.2</m> to approximate <m>\int_{-1}^1 (e^x + e^{-x}) \, dx</m> and find the absolute error for each step size.</p></li>
+                <li><p>Compare your results from Gaussian Quadrature versus the Trapezoidal Rule.</p></li>
+            </ul>
+        </statement>
+        <solution>
+            <ul marker="disc">
+                <li><p>First part  with two point: <m>f(-\sqrt{3}/3) + f(\sqrt{3}/3) = 4.685392175819461</m> with error = 0.015412598755745. Three point: 4.700673880743191 with error <m>1.3089383201503\times 10^{-4}</m>. Four point: 4.700804184312754 with error <m>5.902624522491351\times 10^{-7}</m>.</p></li>
+                <li><p>Second part: <m>\Delta x = 0.5 \rightarrow 4.798332565228005</m> with error 0.097527790652799. <m>\Delta x = 0.25 \rightarrow 4.725262667170421</m> with error 0.024457892595215, <m>\Delta x = 0.2 \rightarrow 4.716463687529812</m> with error 0.015658912954605.</p></li>
+                <li><p>Third part: Gaussian Quadrature does very well for just four points it is more accurate than Trapezoidal with 11 points.</p></li>
+            </ul>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 12</title>
+        <statement>
+            <p>Gaussian Quadrature is designed to be exact for certain functions. For the 4 point Gaussian Quadrature method, describe the functions for which the method should be exact.</p>
+        </statement>
+        <solution>
+            <p>The rule is that an n point formula is exact for polynomials of degree <m>2n-1</m> or lower.</p>
+        </solution>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 13</title>
+        <statement>
+            <p>We discussed earlier how everything we have covered has connections to interpolation. For example, forward and backward difference methods for derivatives is really using linear interpolation, and the Trapezoidal Rule in integration is also the use of linear interpolation. Does Simpson's 1/3 Rule have connection to interpolation and if so what is the connection?</p>
+        </statement>
+    </exercise>
+
+    <exercise number="">
+        <title>Question 14</title>
+        <statement>
+            <p>Trapezoidal and the Simpson's methods are known as fixed point methods. On the other hand, Gaussian Quadrature and adaptive methods are not fixed point methods. Explain the differences between the fixed point methods and the methods that are not fixed point methods.</p>
+        </statement>
+    </exercise>    
+
+    <exercise number="">
+        <title>Question 15</title>
+        <statement>
+            <p>True or False? Adaptive Methods are more accurate than fixed point methods. Please explain your answer.</p>
+        </statement>
+        <solution> <p>Adaptive methods are built for efficiency. Accuracy can be improved ina fixed point method by shrinking the step size, which usually entails higher computational cost. Adaptive methods are built to achieve accuracy, but a lower computational cost. It is possible for an adaptive method to have a higher computational cost since they have a significant start up cost, but this usually reserved for very simple functions. </p> 
+            </solution>
+    </exercise>
+    
+</exercises>
+<p>
+    <alert>References</alert>
+</p>
+
+<p>
+    [KK09], <c>Autar Kaw</c> and <c>Eric Kalu</c> <em>Numerical Methods with Applications (2nd ed.)</em>, 2009. Website: <url href="http://autarkaw.com/books/numericalmethods/index.html">book website</url>.
+</p>
+<p>
+    [LB16], <c>Leon Brin</c>, <em>Tea Time Numerical Analysis (Experiences in Mathematics) (2nd ed.)</em>, 2016. Website: <url href="http://lqbrin.github.io/tea-time-numerical/">lqbrin.github.io/tea-time-numerical</url>.
+</p>
+<p>
+    [Matlab], <url href="https://www.mathworks.com">www.mathworks.com</url>, August 2026.
+</p>
+
+</section>

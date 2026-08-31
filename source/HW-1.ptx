@@ -7,10 +7,13 @@
   </p>
 <exercises xml:id="homework-set-1">
     <title>First homework set</title>
-    <p>
-    <alert>Section 1.1</alert> out of [LB16] Problems: 1, 2, 3, 4, 6, and 12 Use Matlab to solve problems: 7, 9, 10, 11, and 19
-</p>
-<p> 
+<exercise number=" ">
+<title>    <alert>Section 1.1</alert> out of [LB16] 
+</title>
+<statement> Problems: 1, 2, 3, 4, 6, and 12 Use Matlab to solve problems: 7, 9, 10, 11, and 19
+</statement>
+
+<solution>
     <program>
         <input>
 % Problem 2 in MATLAB
@@ -52,8 +55,9 @@ a)
 ans =   2.716666666666666  
 </input>
 </program>
-</p>
 
+</solution>
+</exercise>
 
 <exercise number=" ">
     <title>Question 1.A</title>
@@ -172,9 +176,12 @@ ans =   2.716666666666666
     </solution>
 </exercise>
 
-<p>
-    <alert>Section 1.2</alert> out of [LB16] Problems: 2, 3, 4, 5, 7, 14, 16, 21, and 23 Use Matlab to solve problems: 1, 8, 10, and 26
-</p>
+<exercise number=" ">
+<title> <alert> Section 1.2</alert> out of [LB16] </title>
+<statement>
+ Problems: 2, 3, 4, 5, 7, 14, 16, 21, and 23 Use Matlab to solve problems: 1, 8, 10, and 26
+</statement>
+<solution>
 <p>Problem 1 part g)</p>
 <p> <m> f(x) = \cos^2(x);</m> <m> f'(x) = -2 \cos(x) \sin(x);</m> <m>f''(x) = 2 \sin^2(x) - 2 \cos^2(x);</m> and <m> f'''(x) = 8 \cos(x) \sin(x);</m> and <m> f^{(4)}(x)=8(\cos^2(x) - \sin^2(x)).</m> Thus, <m> T_3(x) = 1 - x^2</m> with <m>R_3(x) = f^{(4)}(\xi) \frac {x^4}{4!}</m> </p>
 
@@ -188,6 +195,8 @@ a) Error bound using the remainder estimating <m> f(0.5)</m> using <m> R_2(0.5)<
 <p> c) Estimate the integral of <m> \int_0^1 f(x) \  dx</m> by calculating <m> \int_0^1 P_2(x) \ dx</m>, which in this case  <m> \int_0^1 P_2(x) \ dx = 1.5</m></p>
 
 <p> d) Find an upper bound of error by calculating <m> \int_0^1\vert R_2(x) \vert \ dx </m>. An estimate to use in this case is that <m> \vert R_2(x) \vert \le 2e^1\frac {x^3}6</m>, which results in <m> \int_0^1  2e^1\frac {x^3}6 \ dx \approx  0.2265 </m>. The actual error of <m> \biggr \vert  \int_0^1 f(x)-P_2(x) \ dx \biggr \vert \approx 0.1220</m> </p>
+</solution>
+</exercise> 
 
 <exercise number=" ">
     <title>Question 2.A</title>
